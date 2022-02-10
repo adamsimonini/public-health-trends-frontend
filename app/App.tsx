@@ -1,12 +1,35 @@
 import React from "react";
 import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
+import axios from "axios";
+const baseUrl = "http://localhost:8000/";
 
 // Define the config
 const config = {
 	useSystemColorMode: false,
 	initialColorMode: "dark"
 };
+
+axios({
+	method: "get",
+	url: `${baseUrl}api/provinces/`
+}).then(response => {
+	console.log(response.data);
+});
+
+axios({
+	method: "get",
+	url: `${baseUrl}api/health_regions/`
+}).then(response => {
+	console.log(response.data);
+});
+
+axios({
+	method: "get",
+	url: `${baseUrl}api/regions/`
+}).then(response => {
+	console.log(response.data);
+});
 
 // extend the theme
 export const theme = extendTheme({ config });
