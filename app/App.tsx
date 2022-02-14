@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
-import VictoryChart from "@components/VictoryChart";
-import Test from "@components/Test";
-import axios from "axios";
-const baseUrl = "http://localhost:8000/";
+import VictoryChart from "./components/VictoryChart";
+import SplayData from "./components/SplayData";
+import API from "./utils/API";
 
 // Define the config
 const config = {
@@ -12,31 +11,41 @@ const config = {
 	initialColorMode: "dark"
 };
 
-axios({
-	method: "get",
-	url: `${baseUrl}api/provinces/`
-}).then(response => {
-	console.log(response.data);
-});
-
-axios({
-	method: "get",
-	url: `${baseUrl}api/health_regions/`
-}).then(response => {
-	console.log(response.data);
-});
-
-axios({
-	method: "get",
-	url: `${baseUrl}api/regions/`
-}).then(response => {
-	console.log(response.data);
-});
-
 // extend the theme
 export const theme = extendTheme({ config });
 
 export default function App() {
+	const [regionData, setRegionData] = useState([]);
+	const [provinceData, setProvinceData] = useState([]);
+	const [healthRegionData, setHealthRegionData] = useState([]);
+
+	const loadHealthRegions = () => {
+		API.getAllHealthRegions().then(res => {
+			// console.log(res.data);
+			setHealthRegionData(res.data);
+		});
+	};
+
+	const loadProvinces = () => {
+		API.getAllProvinces().then(res => {
+			// console.log(res.data);
+			setProvinceData(res.data);
+		});
+	};
+
+	const loadRegions = () => {
+		API.getAllRegions().then(res => {
+			// console.log(res.data);
+			setRegionData(res.data);
+		});
+	};
+
+	useEffect(() => {
+		loadHealthRegions();
+		loadProvinces();
+		loadRegions();
+	}, []);
+
 	return (
 		<NativeBaseProvider>
 			<Center _dark={{ bg: "blueGray.900" }} _light={{ bg: "blueGray.50" }} px={4} flex={1}>
@@ -54,7 +63,10 @@ export default function App() {
 						</Text>
 					</Link>
 					<ToggleDarkMode />
-					<Test />
+					{/* <Text>{regionData[0].name_en}</Text> */}
+					<SplayData location={regionData} />
+					<SplayData location={provinceData} />
+					<SplayData location={healthRegionData} />
 				</VStack>
 				<VictoryChart />
 			</Center>

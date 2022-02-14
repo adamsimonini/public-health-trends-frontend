@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { Text } from "native-base";
 
 function Test() {
 	return (
 		<View style={styles.container}>
-			<h1>Test</h1>
+			<Text>Test 2</Text>
 		</View>
 	);
 }
