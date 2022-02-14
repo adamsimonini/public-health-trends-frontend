@@ -8,6 +8,7 @@ module.exports = async function (env, argv) {
 	const config = await createExpoWebpackConfigAsync(env, argv);
 	// If you want to add a new alias to the config.
 	config.resolve.alias["@components"] = "./components";
+	config.resolve.alias["victory-native"] = "victory";
 
 	// Maybe you want to turn off compression in dev mode.
 	if (config.mode === "development") {

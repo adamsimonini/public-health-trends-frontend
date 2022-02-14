@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
-// import VictoryChart from "./components/VictoryChart";
+import VictoryChart from "@components/VictoryChart";
 import Test from "@components/Test";
 import axios from "axios";
 const baseUrl = "http://localhost:8000/";
@@ -54,9 +54,9 @@ export default function App() {
 						</Text>
 					</Link>
 					<ToggleDarkMode />
+					<Test />
 				</VStack>
-				{/* <VictoryChart /> */}
-				<Test />
+				<VictoryChart />
 			</Center>
 		</NativeBaseProvider>
 	);
