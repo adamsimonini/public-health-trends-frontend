@@ -11,7 +11,7 @@ const SplayData = (props: any) => {
 
 	return (
 		<View style={styles.container}>
-			{props.location[0] && <Heading size="lg">Health Region</Heading>}
+			{props.location[0] && <Heading size="lg">API Call Results</Heading>}
 			<Box alignSelf="center" bg="primary.100">
 				{data}
 			</Box>

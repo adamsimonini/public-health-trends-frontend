@@ -5,13 +5,13 @@ const baseUrl = "http://localhost:8000/";
 export default {
 	// Gets all complete locations data
 	getAllHealthRegions: function () {
-		return axios.get(`${baseUrl}api/health_regions/`);
+		return axios.get(`http://localhost:8000/api/health_regions/`).catch(err => console.log(err));
 	},
 	getAllProvinces: function () {
-		return axios.get(`${baseUrl}api/provinces/`);
+		return axios.get(`http://localhost:8000/api/provinces/`).catch(err => console.log(err));
 	},
 	getAllRegions: function () {
-		return axios.get(`${baseUrl}api/regions/`);
+		return axios.get(`http://localhost:8000/api/regions/`).catch(err => console.log(err));
 	}
 
 	// Gets all formal sortation areas
