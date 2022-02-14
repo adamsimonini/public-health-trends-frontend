@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
+// import VictoryChart from "./components/VictoryChart";
+import Test from "@components/Test";
 import axios from "axios";
 const baseUrl = "http://localhost:8000/";
 
@@ -40,7 +42,7 @@ export default function App() {
 			<Center _dark={{ bg: "blueGray.900" }} _light={{ bg: "blueGray.50" }} px={4} flex={1}>
 				<VStack space={5} alignItems="center">
 					<NativeBaseIcon />
-					<Heading size="lg">Welcome to NativeBase! Sweet!</Heading>
+					<Heading size="lg">Welcome to NativeBase! Hello, April! Hehehee</Heading>
 					<HStack space={2} alignItems="center">
 						<Text>Edit</Text>
 						<Code>App.tsx</Code>
@@ -53,6 +55,8 @@ export default function App() {
 					</Link>
 					<ToggleDarkMode />
 				</VStack>
+				{/* <VictoryChart /> */}
+				<Test />
 			</Center>
 		</NativeBaseProvider>
 	);
