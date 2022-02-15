@@ -1,31 +1,29 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, Box, Heading } from "native-base";
+import { Text, Box, Heading, NativeBaseProvider, Center, VStack, extendTheme, useColorModeValue } from "native-base";
+
+const config = {
+	useSystemColorMode: false,
+	initialColorMode: "dark"
+};
+
+export const theme = extendTheme({ config });
 
 const SplayData = (props: any) => {
 	let data = [];
-	console.log(props);
+	console.log(JSON.stringify(props));
 	for (let i = 0; i < props.location.length; i++) {
 		data.push(<Text key={props.location[i].name_en}>{props.location[i].name_en}</Text>);
 	}
 
 	return (
-		<View style={styles.container}>
-			{props.location[0] && <Heading size="lg">API Call Results</Heading>}
-			<Box alignSelf="center" bg="primary.100">
-				{data}
-			</Box>
-		</View>
+		<Center px={4} flex={1}>
+			<VStack space={5} alignItems="center">
+				<Heading size="lg">API Call Results</Heading>
+				<Text alignSelf="center">{data}</Text>
+			</VStack>
+		</Center>
 	);
 };
 
 export default SplayData;
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "#f5fcff"
-	}
-});

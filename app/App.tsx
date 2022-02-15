@@ -21,22 +21,19 @@ export default function App() {
 
 	const loadHealthRegions = () => {
 		API.getAllHealthRegions().then(res => {
-			// console.log(res.data);
-			setHealthRegionData(res.data);
+			if (res) setHealthRegionData(res.data);
 		});
 	};
 
 	const loadProvinces = () => {
 		API.getAllProvinces().then(res => {
-			// console.log(res.data);
-			setProvinceData(res.data);
+			if (res) setProvinceData(res.data);
 		});
 	};
 
 	const loadRegions = () => {
 		API.getAllRegions().then(res => {
-			// console.log(res.data);
-			setRegionData(res.data);
+			if (res) setRegionData(res.data);
 		});
 	};
 
