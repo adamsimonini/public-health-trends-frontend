@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
+import { Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
 import VictoryChart from "./components/VictoryChart";
 import SplayData from "./components/SplayData";
@@ -21,19 +21,19 @@ export default function App() {
 
 	const loadHealthRegions = () => {
 		API.getAllHealthRegions().then(res => {
-			if (res) setHealthRegionData(res.data);
+			setHealthRegionData(res);
 		});
 	};
 
 	const loadProvinces = () => {
 		API.getAllProvinces().then(res => {
-			if (res) setProvinceData(res.data);
+			setProvinceData(res);
 		});
 	};
 
 	const loadRegions = () => {
 		API.getAllRegions().then(res => {
-			if (res) setRegionData(res.data);
+			setRegionData(res);
 		});
 	};
 
@@ -60,10 +60,52 @@ export default function App() {
 						</Text>
 					</Link>
 					<ToggleDarkMode />
-					{/* <Text>{regionData[0].name_en}</Text> */}
-					<SplayData location={regionData} />
-					<SplayData location={provinceData} />
-					<SplayData location={healthRegionData} />
+					<Container>
+						<VStack space="2.5" mt="4" px="8">
+							<Heading size="lg">API Results</Heading>
+							<Stack direction="column" mb="2.5" mt="1.5" space={3}>
+								<Center
+									_dark={{ bg: "blueGray.900" }}
+									_light={{ bg: "blueGray.50" }}
+									rounded="sm"
+									_text={{
+										color: "warmGray.50",
+										fontWeight: "medium"
+									}}
+									shadow={"3"}
+								>
+									<Heading size="lg">Helath Region</Heading>
+									<SplayData apiResult={healthRegionData} />
+								</Center>
+								<Center
+									_dark={{ bg: "blueGray.900" }}
+									_light={{ bg: "blueGray.50" }}
+									rounded="sm"
+									_text={{
+										color: "warmGray.50",
+										fontWeight: "medium"
+									}}
+									shadow={"3"}
+								>
+									<Heading size="lg">Province</Heading>
+									<SplayData apiResult={provinceData} />
+								</Center>
+								<Center
+									_dark={{ bg: "blueGray.900" }}
+									_light={{ bg: "blueGray.50" }}
+									rounded="sm"
+									_text={{
+										color: "warmGray.50",
+										fontWeight: "medium"
+									}}
+									shadow={"3"}
+								>
+									<Heading size="md">Region</Heading>
+									<SplayData apiResult={regionData} />
+								</Center>
+							</Stack>
+						</VStack>
+					</Container>
 				</VStack>
 				<VictoryChart />
 			</Center>

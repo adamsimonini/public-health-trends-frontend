@@ -1,17 +1,37 @@
-import axios from "axios";
-
-const baseUrl = "http://localhost:8000/";
+const baseUrl = "http://localhost:8000";
 
 export default {
 	// Gets all complete locations data
-	getAllHealthRegions: function () {
-		return axios.get(`http://localhost:8000/api/health_regions/`).catch(err => console.log(err));
+	getAllHealthRegions: () => {
+		return fetch(`${baseUrl}/api/health_regions/`)
+			.then(response => response.json())
+			.then(json => {
+				return json;
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	},
 	getAllProvinces: function () {
-		return axios.get(`http://localhost:8000/api/provinces/`).catch(err => console.log(err));
+		return fetch(`${baseUrl}/api/provinces/`)
+			.then(response => response.json())
+			.then(json => {
+				return json;
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	},
 	getAllRegions: function () {
-		return axios.get(`http://localhost:8000/api/regions/`).catch(err => console.log(err));
+		return fetch(`${baseUrl}/api/regions/`)
+			.then(response => response.json())
+			.then(json => {
+				console.log(json);
+				return json;
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	}
 
 	// Gets all formal sortation areas
