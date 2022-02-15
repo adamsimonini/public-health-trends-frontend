@@ -1,8 +1,18 @@
-const baseUrl = "http://localhost:8000";
+// https://reactnative.dev/docs/platform-specific-code
+import { Platform } from "react-native";
+
+let baseUrl = "";
+
+if (Platform.OS === "android") {
+	baseUrl = "http://10.0.2.2:8000";
+} else {
+	baseUrl = "http://localhost:8000";
+}
 
 export default {
 	// Gets all complete locations data
 	getAllHealthRegions: () => {
+		console.log(baseUrl);
 		return fetch(`${baseUrl}/api/health_regions/`)
 			.then(response => response.json())
 			.then(json => {
@@ -26,7 +36,6 @@ export default {
 		return fetch(`${baseUrl}/api/regions/`)
 			.then(response => response.json())
 			.then(json => {
-				console.log(json);
 				return json;
 			})
 			.catch(error => {

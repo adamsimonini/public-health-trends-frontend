@@ -15,7 +15,6 @@ const SplayData = (props: any) => {
 	let apiData: any = [];
 	for (let index in props.apiResult) {
 		let result = props.apiResult[index];
-		console.log(result);
 		let keys = Object.keys(result);
 		keys.forEach(key => {
 			apiData.push(

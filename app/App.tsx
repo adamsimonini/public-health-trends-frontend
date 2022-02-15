@@ -46,6 +46,7 @@ export default function App() {
 	return (
 		<NativeBaseProvider>
 			<Center _dark={{ bg: "blueGray.900" }} _light={{ bg: "blueGray.50" }} px={4} flex={1}>
+				<Text>Hello</Text>
 				<VStack space={5} alignItems="center">
 					<NativeBaseIcon />
 					<Heading size="lg">Welcome to NativeBase! Hello, April! Hehehee</Heading>
@@ -100,14 +101,14 @@ export default function App() {
 									}}
 									shadow={"3"}
 								>
-									<Heading size="md">Region</Heading>
+									<Heading size="lg">Region</Heading>
 									<SplayData apiResult={regionData} />
 								</Center>
 							</Stack>
 						</VStack>
 					</Container>
 				</VStack>
-				<VictoryChart />
+				{/* <VictoryChart /> */}
 			</Center>
 		</NativeBaseProvider>
 	);
