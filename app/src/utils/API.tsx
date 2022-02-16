@@ -16,11 +16,30 @@ export default {
 		return fetch(`${baseUrl}/api/health_regions/`)
 			.then(response => response.json())
 			.then(json => {
+				console.log(json);
 				return json;
 			})
 			.catch(error => {
 				console.error(error);
 			});
+
+		// return fetch(`${baseUrl}/api/health_regions/`).then(async response => {
+		// 	try {
+		// 		const data = await response.text();
+		// 		console.log("response data?", data);
+		// 	} catch (error) {
+		// 		console.log("Error happened here!");
+		// 		console.error(error);
+		// 	}
+		// });
+		// return fetch(`${baseUrl}/api/health_regions/`)
+		// 	.then(response => response.json())
+		// 	.then(json => {
+		// 		return json;
+		// 	})
+		// 	.catch(error => {
+		// 		console.error(error);
+		// 	});
 	},
 	getAllProvinces: function () {
 		return fetch(`${baseUrl}/api/provinces/`)

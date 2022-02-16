@@ -7,7 +7,9 @@ const path = require("path");
 module.exports = async function (env, argv) {
 	const config = await createExpoWebpackConfigAsync(env, argv);
 	// If you want to add a new alias to the config.
-	config.resolve.alias["@components"] = "./components";
+	config.resolve.alias["@components"] = path.resolve(__dirname, "src/components");
+	config.resolve.alias["@utils"] = path.resolve(__dirname, "src/utils");
+	config.resolve.alias["@theme"] = path.resolve(__dirname, "src/theme");
 	config.resolve.alias["victory-native"] = "victory";
 
 	// Maybe you want to turn off compression in dev mode.
