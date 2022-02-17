@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Heading, Divider } from "native-base";
 
 const Header = () => {

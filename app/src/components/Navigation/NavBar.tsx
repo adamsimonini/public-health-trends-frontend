@@ -4,6 +4,7 @@ import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigatio
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeBaseProvider, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
 const Drawer = createDrawerNavigator();
+
 function Component(props: any) {
 	return (
 		<Center>

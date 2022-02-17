@@ -1,3 +1,4 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Box, useColorModeValue, useToken, Text, Stack, Input, Center } from "native-base";
 import Home from "@components/Home";
