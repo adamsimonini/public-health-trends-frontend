@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import { BaseTheme } from "./src/theme/index";
 // import VictoryChart from "./components/VictoryChart";

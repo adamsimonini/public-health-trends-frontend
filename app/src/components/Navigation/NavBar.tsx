@@ -8,7 +8,7 @@ function Component(props: any) {
 	return (
 		<Center>
 			<Text mt="12" fontSize="18">
-				This is {props.route.name} page.
+				This is {props.route.name} page!
 			</Text>
 		</Center>
 	);
@@ -16,16 +16,16 @@ function Component(props: any) {
 
 const getIcon = (screenName: any) => {
 	switch (screenName) {
-		case "Inbox":
-			return "email";
-		case "Outbox":
-			return "send";
-		case "Favorites":
-			return "heart";
-		case "Archive":
-			return "archive";
-		case "Trash":
-			return "trash-can";
+		case "Locations":
+			return "map-marker";
+		case "Charts":
+			return "chart-bar";
+		case "Disease":
+			return "virus-outline";
+		case "Info":
+			return "information";
+		case "Settings":
+			return "cog-outline";
 		case "Spam":
 			return "alert-circle";
 		default:
@@ -39,21 +39,22 @@ function CustomDrawerContent(props: any) {
 			<VStack space="6" my="2" mx="1">
 				<Box px="4">
 					<Text bold color="gray.700">
-						Mail
+						Navigation
 					</Text>
-					<Text fontSize="14" mt="1" color="gray.500" fontWeight="500">
+					{/* <Text fontSize="14" mt="1" color="gray.500" fontWeight="500">
 						john_doe@gmail.com
-					</Text>
+					</Text> */}
 				</Box>
 				<VStack divider={<Divider />} space="4">
 					<VStack space="3">
 						{props.state.routeNames.map((name: any, index: any) => (
 							<Pressable
+								key={name}
 								px="5"
 								py="3"
 								rounded="md"
 								bg={index === props.state.index ? "rgba(6, 182, 212, 0.1)" : "transparent"}
-								onPress={event => {
+								onPress={e => {
 									props.navigation.navigate(name);
 								}}
 							>
@@ -66,7 +67,7 @@ function CustomDrawerContent(props: any) {
 							</Pressable>
 						))}
 					</VStack>
-					<VStack space="5">
+					{/* <VStack space="5">
 						<Text fontWeight="500" fontSize="14" px="5" color="gray.500">
 							Labels
 						</Text>
@@ -96,7 +97,7 @@ function CustomDrawerContent(props: any) {
 								</HStack>
 							</Pressable>
 						</VStack>
-					</VStack>
+					</VStack> */}
 				</VStack>
 			</VStack>
 		</DrawerContentScrollView>
@@ -106,12 +107,12 @@ function MyDrawer() {
 	return (
 		<Box safeArea flex={1}>
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-				<Drawer.Screen name="Inbox" component={Component} />
-				<Drawer.Screen name="Outbox" component={Component} />
-				<Drawer.Screen name="Favorites" component={Component} />
-				<Drawer.Screen name="Archive" component={Component} />
-				<Drawer.Screen name="Trash" component={Component} />
-				<Drawer.Screen name="Spam" component={Component} />
+				<Drawer.Screen name="Charts" component={Component} />
+				<Drawer.Screen name="Disease" component={Component} />
+				<Drawer.Screen name="Locations" component={Component} />
+				<Drawer.Screen name="Info" component={Component} />
+				<Drawer.Screen name="Settings" component={Component} />
+				{/* <Drawer.Screen name="Spam" component={Component} /> */}
 			</Drawer.Navigator>
 		</Box>
 	);
