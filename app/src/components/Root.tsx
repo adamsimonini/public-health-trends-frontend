@@ -1,7 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Box, useColorModeValue, useToken, Text } from "native-base";
-import Home from "./Home";
+import { Box, useColorModeValue, useToken, Text, Stack, Input, Center } from "native-base";
+import Home from "@components/Home";
+import Header from "@components/Header";
+import SelectLocation from "@components/SelectLocation";
+import NavBar from "@components/NavBar";
 
 export default function Root() {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
@@ -9,7 +12,7 @@ export default function Root() {
 	return (
 		<NavigationContainer>
 			<Box
-				flex={1}
+				flex={19}
 				w="100%"
 				_light={{
 					bg: "coolGray.50"
@@ -22,8 +25,16 @@ export default function Root() {
 					overflowX: "hidden"
 				}}
 			>
-				<Text>Hello, world!</Text>
-				<Home />
+				<Box flex={1} w="100%"></Box>
+				<Box flex={19} w="100%">
+					<NavBar />
+					<Header />
+					<Center>
+						{/* <Text>Hello, world!</Text> */}
+						{/* <Home /> */}
+						<SelectLocation />
+					</Center>
+				</Box>
 			</Box>
 		</NavigationContainer>
 	);
