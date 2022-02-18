@@ -1,15 +1,27 @@
 import * as React from "react";
+import { Platform, UIManager } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeBaseProvider, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
+import SplayData from "@components/SplayData";
 const Drawer = createDrawerNavigator();
+
+if (Platform.OS === "android") {
+	if (UIManager.setLayoutAnimationEnabledExperimental) {
+		UIManager.setLayoutAnimationEnabledExperimental(true);
+	}
+}
 
 function Component(props: any) {
 	return (
 		<Center>
 			<Text mt="12" fontSize="18">
-				This is the <b>{props.route.name}</b> page!
+				This is the{" "}
+				<Text bold fontSize="18">
+					{props.route.name}
+				</Text>{" "}
+				page!
 			</Text>
 		</Center>
 	);
@@ -19,18 +31,18 @@ const getIcon = (screenName: any) => {
 	switch (screenName) {
 		case "Home":
 			return "home";
-		case "Locations":
+		case "Select Disease":
+			return "virus-outline";
+		case "Choose Locations":
 			return "map-marker";
 		case "Charts":
 			return "chart-bar";
-		case "Disease":
-			return "virus-outline";
 		case "Info":
 			return "information";
 		case "Settings":
 			return "cog-outline";
 		default:
-			return undefined;
+			return "home";
 	}
 };
 
@@ -119,7 +131,7 @@ function LogoTitle() {
 					}}
 					alignItems="center"
 				>
-					<Image style={{ width: 50, height: 50 }} source={require("@assets/chart-600x600.png")} mr="3" />
+					<Image alt="public health trends logo" style={{ width: 50, height: 50 }} source={require("@assets/chart-600x600.png")} mr="3" />
 					<Heading size="lg">Public Health Trends</Heading>
 				</Flex>
 			</VStack>
@@ -132,11 +144,10 @@ function MyDrawer() {
 		<Box safeArea flex={1}>
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
 				<Drawer.Screen name="Home" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="Disease" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="Locations" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Select Disease" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Choose Locations" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
 				<Drawer.Screen name="Info" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
 				<Drawer.Screen name="Settings" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
-				{/* <Drawer.Screen name="Spam" component={Component} /> */}
 			</Drawer.Navigator>
 		</Box>
 	);

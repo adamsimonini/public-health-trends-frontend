@@ -5,6 +5,7 @@ import Home from "@components/Home";
 import Header from "@components/Header";
 import SelectLocation from "@components/SelectLocation";
 import NavBar from "@components/Navigation/NavBar";
+import SplayData from "@components/SplayData";
 
 export default function Root() {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
@@ -26,6 +27,7 @@ export default function Root() {
 		>
 			{/* <Box flex={1} w="100%"></Box>
 			<Box flex={19} w="100%"> */}
+			{/* <SplayData /> */}
 			<NavBar />
 			{/* <Header />
 				<Center>
