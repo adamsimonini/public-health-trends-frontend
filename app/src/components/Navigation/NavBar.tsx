@@ -2,14 +2,14 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { NativeBaseProvider, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
+import { NativeBaseProvider, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
 const Drawer = createDrawerNavigator();
 
 function Component(props: any) {
 	return (
 		<Center>
 			<Text mt="12" fontSize="18">
-				This is {props.route.name} page!
+				This is the <b>{props.route.name}</b> page!
 			</Text>
 		</Center>
 	);
@@ -17,6 +17,8 @@ function Component(props: any) {
 
 const getIcon = (screenName: any) => {
 	switch (screenName) {
+		case "Home":
+			return "home";
 		case "Locations":
 			return "map-marker";
 		case "Charts":
@@ -27,8 +29,6 @@ const getIcon = (screenName: any) => {
 			return "information";
 		case "Settings":
 			return "cog-outline";
-		case "Spam":
-			return "alert-circle";
 		default:
 			return undefined;
 	}
@@ -104,20 +104,44 @@ function CustomDrawerContent(props: any) {
 		</DrawerContentScrollView>
 	);
 }
+
+// Replace title with custom component: https://reactnavigation.org/docs/headers/#replacing-the-title-with-a-custom-component
+function LogoTitle() {
+	return (
+		<Box w="100%" flex="1">
+			<VStack space={2.5} w="100%" px="3" alignItems="center">
+				<Flex
+					direction="row"
+					mb="2.5"
+					mt="1.5"
+					_text={{
+						color: "coolGray.800"
+					}}
+					alignItems="center"
+				>
+					<Image style={{ width: 50, height: 50 }} source={require("@assets/chart-600x600.png")} mr="3" />
+					<Heading size="lg">Public Health Trends</Heading>
+				</Flex>
+			</VStack>
+		</Box>
+	);
+}
+
 function MyDrawer() {
 	return (
 		<Box safeArea flex={1}>
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-				<Drawer.Screen name="Charts" component={Component} />
-				<Drawer.Screen name="Disease" component={Component} />
-				<Drawer.Screen name="Locations" component={Component} />
-				<Drawer.Screen name="Info" component={Component} />
-				<Drawer.Screen name="Settings" component={Component} />
+				<Drawer.Screen name="Home" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Disease" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Locations" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Info" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="Settings" options={{ headerTitle: props => <LogoTitle {...props} /> }} component={Component} />
 				{/* <Drawer.Screen name="Spam" component={Component} /> */}
 			</Drawer.Navigator>
 		</Box>
 	);
 }
+
 export default function NavBar() {
 	return (
 		<NavigationContainer>
