@@ -16,6 +16,12 @@ NativeBase has a wealth of theming functionality. See [here](https://docs.native
 
 ## Development Instructions
 
+Globally install the [expo cli](https://www.npmjs.com/package/expo-cli)
+
+```
+  npm i -g expo-cli
+```
+
 Currently, docker-compose does not work. To run the app via npm, change directory to ./app, then run the following
 
 ```
