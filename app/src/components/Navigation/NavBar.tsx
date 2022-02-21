@@ -5,6 +5,7 @@ import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigatio
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeBaseProvider, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
 import SplayData from "@components/SplayData";
+import linking from "@components/Navigation/Linking";
 const Drawer = createDrawerNavigator();
 
 if (Platform.OS === "android") {
@@ -155,7 +156,7 @@ function MyDrawer() {
 
 export default function NavBar() {
 	return (
-		<NavigationContainer>
+		<NavigationContainer linking={linking}>
 			<NativeBaseProvider>
 				<MyDrawer />
 			</NativeBaseProvider>
