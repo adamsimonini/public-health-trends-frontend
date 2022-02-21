@@ -10,7 +10,8 @@ import config from "./nativebase.config";
 
 export default function App() {
 	return (
-		<NativeBaseProvider theme={BaseTheme}>
+		<NativeBaseProvider>
+			{/* <Text>Hello</Text> */}
 			<Root />
 		</NativeBaseProvider>
 	);

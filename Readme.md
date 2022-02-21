@@ -39,3 +39,11 @@ You can also try to android version, but you'll need to access it through one of
 1. download [Android Studio](https://developer.android.com/studio), configure it properly, add a virtual device, and have React Native display on the emulated device
 
 2. download the [Expo](https://expo.dev/client) app from the Goolge Play Store, or Expo Go from Apple's App Store, and use the QR Code generated in the CLI to get the app running on your phone
+
+### Troubleshooting
+
+You can clear expo's cache with the following command:
+
+```
+  expo r -c
+```
