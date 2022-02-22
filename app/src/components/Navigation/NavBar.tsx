@@ -1,5 +1,4 @@
 import * as React from "react";
-import "react-native-reanimated";
 import { Platform, UIManager } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";

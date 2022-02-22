@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 import { Box, useColorModeValue, useToken, Text, Stack, Input, Center, HStack, Switch, useColorMode } from "native-base";
 import NavDrawer from "@components/Navigation/NavBar";

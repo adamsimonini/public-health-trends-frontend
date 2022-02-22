@@ -1,5 +1,4 @@
 import React from "react";
-import "react-native-reanimated";
 import { Box, Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import { BaseTheme } from "@theme/index";
 // import VictoryChart from "./components/VictoryChart";
