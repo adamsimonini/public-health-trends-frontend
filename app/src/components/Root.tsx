@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Box, useColorModeValue, useToken, Text, Stack, Input, Center, HStack, Switch, useColorMode } from "native-base";
-import NavDrawer from "@components/Navigation/NavBar";
+import NavDrawer from "@components/Navigation/NavDrawer";
 import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
+import LanguageToggle from "@components/Navigation/LanguageToggle";
 
 // configuring links: https://reactnavigation.org/docs/configuring-links/
 const prefix = Linking.createURL("/");
@@ -12,10 +13,10 @@ const linking = {
 	prefixes: [prefix]
 };
 
-export default function Root() {
+export default function Root(props) {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
 	const bgColor = useColorModeValue(lightBg, darkBg);
-
+	console.log(props.localization);
 	// https://reactnavigation.org/docs/themes/
 	const phtTheme = {
 		dark: false,
@@ -38,6 +39,7 @@ export default function Root() {
 					overflowX: "hidden"
 				}}
 			>
+				<LanguageToggle />
 				<NavDrawer />
 				<ThemeToggle />
 			</Box>

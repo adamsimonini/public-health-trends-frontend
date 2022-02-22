@@ -18,8 +18,8 @@
 		"eject": "expo eject"
 	},
 	"dependencies": {
-		"3.0.0": "^3.0.0",
 		"@expo/vector-icons": "^12.0.5",
+		"@react-native-async-storage/async-storage": "~1.15.0",
 		"@react-native-community/masked-view": "^0.1.11",
 		"@react-navigation/drawer": "^6.3.1",
 		"@react-navigation/native": "^6.0.8",
@@ -28,7 +28,9 @@
 		"expo": "^44.0.0",
 		"expo-linear-gradient": "~11.0.3",
 		"expo-linking": "~3.0.0",
+		"expo-localization": "~12.0.0",
 		"expo-status-bar": "~1.2.0",
+		"i18n-js": "^3.8.0",
 		"metro-react-native-babel-preset": "^0.68.0",
 		"native-base": "3.2.1",
 		"react-dom": "^17.0.2",
@@ -39,6 +41,7 @@
 		"react-native-screens": "~3.10.1",
 		"react-native-svg": "12.1.1",
 		"react-native-web": "0.17.1",
+		"react-native-webview": "^11.17.2",
 		"react-navigation": "^4.4.4",
 		"react-navigation-drawer": "^2.7.2",
 		"styled-components": "^5.3.0",

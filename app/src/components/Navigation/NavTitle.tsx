@@ -1,12 +1,13 @@
 import * as React from "react";
-import { Flex, Image, Box, Heading, VStack } from "native-base";
+import { Flex, Image, Box, Heading, VStack, Spacer, Center } from "native-base";
+// import LanguageToggle from "@components/Navigation/LanguageToggle";
 
 // Replace navigation title with custom component: https://reactnavigation.org/docs/headers/#replacing-the-title-with-a-custom-component
 
 function NavTitle() {
 	return (
 		<Box w="100%" flex="1">
-			<VStack space={2.5} w="100%" px="3" alignItems="center">
+			<VStack space={2.5} w="100%" px="3">
 				<Flex
 					direction="row"
 					mb="2.5"

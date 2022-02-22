@@ -3,7 +3,7 @@ import React from "react";
 import { Fab, useColorMode, Icon } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-const Floaters = () => {
+const LanguageToggle = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
@@ -30,11 +30,11 @@ const Floaters = () => {
 					}
 				}}
 				p={3}
-				icon={<Icon as={Ionicons} _dark={{ name: "sunny", color: "orange.400" }} _light={{ name: "moon", color: "blueGray.100" }} size="md" />}
+				icon={<Icon as={Ionicons} _dark={{ name: "sunny", color: "orange.400" }} _light={{ name: "moon", color: "blueGray.100" }} size="sm" />}
 				onPress={toggleColorMode}
 			/>
 		</>
 	);
 };
 
-export default Floaters;
+export default LanguageToggle;
