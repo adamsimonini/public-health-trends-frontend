@@ -1,41 +1,39 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Box, useColorModeValue, useToken, Text, Stack, Input, Center } from "native-base";
-import Home from "@components/Home";
-import Header from "@components/Header";
-import SelectLocation from "@components/SelectLocation";
-import NavBar from "@components/Navigation/NavBar";
+import { Box, useColorModeValue, useToken, Text, Stack, Input, Center, HStack, Switch, useColorMode } from "native-base";
+import NavDrawer from "@components/Navigation/NavBar";
 import SplayData from "@components/SplayData";
+import ThemeToggle from "@theme/ThemeToggle";
 
 export default function Root() {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
+	const bgColor = useColorModeValue(lightBg, darkBg);
+
+	// https://reactnavigation.org/docs/themes/
+	const MyTheme = {
+		dark: false,
+		colors: {
+			primary: "rgb(255, 45, 85)",
+			background: bgColor,
+			card: bgColor,
+			text: bgColor,
+			border: "rgb(199, 199, 204)",
+			notification: "rgb(255, 69, 58)"
+		}
+	};
 
 	return (
-		<Box
-			flex={19}
-			w="100%"
-			_light={{
-				bg: "coolGray.50"
-			}}
-			_dark={{
-				bg: "blueGray.900"
-			}}
-			bg={useColorModeValue("", "blueGray.900")}
-			_web={{
-				overflowX: "hidden"
-			}}
-		>
-			{/* <Box flex={1} w="100%"></Box>
-			<Box flex={19} w="100%"> */}
-			{/* <SplayData location="province" /> */}
-			<NavBar />
-			{/* <Header />
-				<Center>
-					<Text>Hello, world!</Text>
-					<Home />
-					<SelectLocation />
-				</Center>
-			</Box> */}
-		</Box>
+		<NavigationContainer theme={MyTheme}>
+			<Box
+				flex={1}
+				w="100%"
+				_web={{
+					overflowX: "hidden"
+				}}
+			>
+				<NavDrawer />
+				<ThemeToggle />
+			</Box>
+		</NavigationContainer>
 	);
 }
