@@ -4,13 +4,20 @@ import { Box, useColorModeValue, useToken, Text, Stack, Input, Center, HStack, S
 import NavDrawer from "@components/Navigation/NavBar";
 import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
+import * as Linking from "expo-linking";
+
+// configuring links: https://reactnavigation.org/docs/configuring-links/
+const prefix = Linking.createURL("/");
+const linking = {
+	prefixes: [prefix]
+};
 
 export default function Root() {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
 	const bgColor = useColorModeValue(lightBg, darkBg);
 
 	// https://reactnavigation.org/docs/themes/
-	const MyTheme = {
+	const phtTheme = {
 		dark: false,
 		colors: {
 			primary: "rgb(255, 45, 85)",
@@ -23,7 +30,7 @@ export default function Root() {
 	};
 
 	return (
-		<NavigationContainer theme={MyTheme}>
+		<NavigationContainer theme={phtTheme} linking={linking}>
 			<Box
 				flex={1}
 				w="100%"

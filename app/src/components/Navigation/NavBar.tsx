@@ -4,16 +4,10 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeBaseProvider, Switch, useColorMode, useColorModeValue, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon, extendTheme } from "native-base";
-import * as Linking from "expo-linking";
 import NavTitle from "@components/Navigation/NavTitle";
 import SplayData from "@components/SplayData";
 
 const Drawer = createDrawerNavigator();
-const prefix = Linking.createURL("/");
-
-const linking = {
-	prefixes: [prefix]
-};
 
 if (Platform.OS === "android") {
 	if (UIManager.setLayoutAnimationEnabledExperimental) {
