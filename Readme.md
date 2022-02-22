@@ -10,6 +10,8 @@ The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
 
 3. ### [NativeBase UI Library](https://docs.nativebase.io/?utm_source=HomePage&utm_medium=header&utm_campaign=NativeBase_3)
 
+4. ### [React Navigation](https://reactnavigation.org/)
+
 ## Themes (Dark Mode)
 
 NativeBase has a wealth of theming functionality. See [here](https://docs.nativebase.io/3.0.x/color-mode) for details.
@@ -46,4 +48,10 @@ You can clear expo's cache with the following command:
 
 ```
   expo r -c
+```
+
+There is an unfortunate issue with react-native-reanimated and Android. I cannot use version 2.x, and instead have to use version 1.x. What is more, I needed to apply the following code to node-modules/react-native-reanimated/src/Animated.js. Everyone will have to do this if they want to test their code on Android. For now it works, but I'll have to find a better solution later.
+
+```
+global.__reanimatedWorkletInit = () => {};
 ```
