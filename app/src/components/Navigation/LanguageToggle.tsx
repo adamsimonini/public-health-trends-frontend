@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Fab, useColorMode, Icon, Box, Text, Button } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
-import i18n from "i18n-js";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// guide for setting up translations https://dev.to/ramonak/react-native-internationalization-with-i18next-568n
 
 const LanguageToggle = props => {
+	const { i18n } = useTranslation();
 	const { colorMode, toggleColorMode } = useColorMode();
-	let [language, setLanguage] = useState(i18n.locale);
+	let language = i18n.language;
 
 	const toggleLanguage = () => {
-		i18n.locale == "fr" ? (i18n.locale = "en") : (i18n.locale = "fr");
-		setLanguage(i18n.locale);
-		props.localization.locale = "fr";
+		i18n.language == "fr" ? i18n.changeLanguage("en") : i18n.changeLanguage("fr");
+		console.log(i18n.language);
 	};
 
 	return (
