@@ -16,7 +16,7 @@ const linking = {
 export default function Root(props) {
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
 	const bgColor = useColorModeValue(lightBg, darkBg);
-	console.log(props.localization);
+	const localization = props.localization;
 	// https://reactnavigation.org/docs/themes/
 	const phtTheme = {
 		dark: false,
@@ -39,7 +39,7 @@ export default function Root(props) {
 					overflowX: "hidden"
 				}}
 			>
-				<LanguageToggle />
+				<LanguageToggle localization={localization} />
 				<NavDrawer />
 				<ThemeToggle />
 			</Box>

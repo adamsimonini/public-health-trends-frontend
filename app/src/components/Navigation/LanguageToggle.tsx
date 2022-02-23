@@ -5,13 +5,14 @@ import { FontAwesome } from "@expo/vector-icons";
 import i18n from "i18n-js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const LanguageToggle = () => {
+const LanguageToggle = props => {
 	const { colorMode, toggleColorMode } = useColorMode();
 	let [language, setLanguage] = useState(i18n.locale);
 
 	const toggleLanguage = () => {
 		i18n.locale == "fr" ? (i18n.locale = "en") : (i18n.locale = "fr");
 		setLanguage(i18n.locale);
+		props.localization.locale = "fr";
 	};
 
 	return (
