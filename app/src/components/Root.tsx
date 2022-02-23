@@ -5,7 +5,6 @@ import NavDrawer from "@components/Navigation/NavDrawer";
 import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
-import LanguageToggle from "@components/Navigation/LanguageToggle";
 
 // configuring links: https://reactnavigation.org/docs/configuring-links/
 const prefix = Linking.createURL("/");
@@ -39,7 +38,7 @@ export default function Root(props) {
 					overflowX: "hidden"
 				}}
 			>
-				<LanguageToggle localization={localization} />
+				{/* <LanguageToggle /> */}
 				<NavDrawer />
 				<ThemeToggle />
 			</Box>

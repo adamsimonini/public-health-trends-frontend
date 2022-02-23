@@ -6,6 +6,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeBaseProvider, Switch, useColorMode, useColorModeValue, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon, extendTheme } from "native-base";
 import NavTitle from "@components/Navigation/NavTitle";
 import SplayData from "@components/SplayData";
+import LanguageToggle from "@components/Navigation/LanguageToggle";
+import "@translation/i18n.config";
+import { useTranslation } from "react-i18next";
 
 const Drawer = createDrawerNavigator();
 
@@ -16,16 +19,28 @@ if (Platform.OS === "android") {
 }
 
 function Component(props: any) {
+	const { t } = useTranslation();
 	return (
-		<Center>
-			<Text mt="12" fontSize="18">
-				This is the{" "}
-				<Text bold fontSize="18">
-					{props.route.name}
-				</Text>{" "}
-				page!
-			</Text>
-		</Center>
+		<Flex direction="column" h="100%">
+			<Center>
+				<Text mt="12" fontSize="18">
+					This is the{" "}
+					<Text bold fontSize="18">
+						{props.route.name}
+					</Text>{" "}
+					page!
+				</Text>
+			</Center>
+			<Spacer />
+			<Center>
+				<Text>{t("aboutICUData")}</Text>
+			</Center>
+			<Spacer />
+			<Center>
+				<LanguageToggle />
+			</Center>
+			<Spacer />
+		</Flex>
 	);
 }
 

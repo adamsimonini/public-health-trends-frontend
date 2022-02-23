@@ -14,11 +14,12 @@ const LanguageToggle = props => {
 
 	const toggleLanguage = () => {
 		i18n.language == "fr" ? i18n.changeLanguage("en") : i18n.changeLanguage("fr");
-		console.log(i18n.language);
 	};
 
 	return (
-		<Box position="absolute" right="0" mr="5" top="0%" zIndex={1}>
+		<Box>
+			{/* commented out <Box> is for absolute positioning in rop right of app */}
+			{/* <Box position="absolute" right="0" mr="5" mt="5" top="0" zIndex={1}> */}
 			<FontAwesome.Button name="language" onPress={toggleLanguage}>
 				{language == "fr" ? "English" : "Français"}
 			</FontAwesome.Button>
