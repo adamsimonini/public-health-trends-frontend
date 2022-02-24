@@ -1,14 +1,18 @@
 import * as React from "react";
 import { Platform, UIManager } from "react-native";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+// import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerContentScrollView } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { NativeBaseProvider, Switch, useColorMode, useColorModeValue, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon, extendTheme } from "native-base";
+import { useColorMode, Flex, Box, Pressable, VStack, Text, Center, HStack, Divider, Icon } from "native-base";
 import NavTitle from "@components/Navigation/NavTitle";
-import SplayData from "@components/SplayData";
-import LanguageToggle from "@components/Navigation/LanguageToggle";
+// import SplayData from "@components/SplayData";
 import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
+import Settings from "@screens/Settings";
+import Info from "@screens/Info";
+import Locations from "@screens/Locations";
+import Home from "@screens/Home";
+import Diseases from "@screens/Diseases";
 
 const Drawer = createDrawerNavigator();
 
@@ -18,7 +22,7 @@ if (Platform.OS === "android") {
 	}
 }
 
-function Component(props: any) {
+function Component({ route }) {
 	const { t } = useTranslation();
 	return (
 		<Flex direction="column" h="100%">
@@ -26,20 +30,11 @@ function Component(props: any) {
 				<Text mt="12" fontSize="18">
 					This is the{" "}
 					<Text bold fontSize="18">
-						{props.route.name}
+						{route.name}
 					</Text>{" "}
 					page!
 				</Text>
 			</Center>
-			<Spacer />
-			<Center>
-				<Text>{t("aboutICUData")}</Text>
-			</Center>
-			<Spacer />
-			<Center>
-				<LanguageToggle />
-			</Center>
-			<Spacer />
 		</Flex>
 	);
 }
@@ -104,11 +99,11 @@ function NavDrawer() {
 	return (
 		<Box safeArea flex={1} w="100%">
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />} screenOptions={{ headerTintColor: hamburgerColour }}>
-				<Drawer.Screen name="home" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="select-disease" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="choose-locations" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="info" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Component} />
-				<Drawer.Screen name="settings" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Component} />
+				<Drawer.Screen name="home" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
+				<Drawer.Screen name="select-disease" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Diseases} />
+				<Drawer.Screen name="choose-locations" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Locations} />
+				<Drawer.Screen name="info" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Info} />
+				<Drawer.Screen name="settings" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} />
 			</Drawer.Navigator>
 		</Box>
 	);

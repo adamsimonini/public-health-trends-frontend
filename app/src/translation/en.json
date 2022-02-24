@@ -1,7 +1,15 @@
 {
 	"aboutICUData": "about ICU data",
 	"aboutMobilityData": "about mobility data",
+	"add": "Add",
 	"alberta": "Alberta",
 	"and": "and",
-	"COVIDTrends": "COVIDTrends"
+	"COVIDTrends": "COVIDTrends",
+	"dark": "Dark",
+	"diseases": "Diseases",
+	"home": "Home",
+	"info": "Info",
+	"light": "Light",
+	"locations": "Locations",
+	"settings": "Settings"
 }

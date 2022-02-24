@@ -11,6 +11,7 @@
 			"@utils/*": ["./src/utils/*"],
 			"@theme/*": ["./src/theme/*"],
 			"@translation/*": ["./src/translation/*"],
+			"@screens/*": ["./src/screens/*"],
 			"@assets/*": ["./assets/*"],
 			"@/*": ["./*"]
 		},

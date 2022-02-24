@@ -1,8 +1,7 @@
 import React from "react";
-import { Box, Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
+import { Box, Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code, Button } from "native-base";
 import * as Localization from "expo-localization";
-import { en, fr } from "@utils/translations";
-import { BaseTheme } from "@theme/index";
+import { BaseTheme } from "@theme";
 // import VictoryChart from "./components/VictoryChart";
 import Root from "@components/Root";
 import API from "@utils/API";

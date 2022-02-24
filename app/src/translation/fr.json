@@ -1,7 +1,15 @@
 {
 	"aboutICUData": "sur les données de USI",
 	"aboutMobilityData": "sur les données de mobilité",
+	"add": "Ajouter",
 	"alberta": "Alberta",
 	"and": "et",
-	"COVIDTrends": "TendancesCOVID"
+	"COVIDTrends": "TendancesCOVID",
+	"dark": "Foncé",
+	"diseases": "Maladies",
+	"home": "Domicile",
+	"info": "Info",
+	"light": "Légère",
+	"locations": "Emplacements",
+	"settings": "Réglages"
 }

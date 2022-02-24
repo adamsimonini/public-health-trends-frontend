@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Fab, useColorMode, Icon } from "native-base";
+import { Fab, useColorMode, Icon, Flex, Button, Box } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
-const LanguageToggle = () => {
+const ThemeToggleFab = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
 
 	return (
@@ -30,11 +31,24 @@ const LanguageToggle = () => {
 					}
 				}}
 				p={3}
-				icon={<Icon as={Ionicons} _dark={{ name: "sunny", color: "orange.400" }} _light={{ name: "moon", color: "blueGray.100" }} size="sm" />}
+				icon={<Icon as={Ionicons} _dark={{ name: "sunny", color: "orange.400" }} _light={{ name: "moon", color: "blueGray.100" }} size="md" />}
 				onPress={toggleColorMode}
 			/>
 		</>
 	);
 };
 
-export default LanguageToggle;
+export const ThemeToggle = () => {
+	const { colorMode, toggleColorMode } = useColorMode();
+	const { t } = useTranslation();
+
+	return (
+		<Box w="120">
+			<Button size="md" onPress={toggleColorMode} leftIcon={<Icon as={Ionicons} _dark={{ name: "sunny", color: "white" }} _light={{ name: "moon", color: "white" }} size="sm" />}>
+				{colorMode === "dark" ? t("light") : t("dark")}
+			</Button>
+		</Box>
+	);
+};
+
+export default ThemeToggleFab;
