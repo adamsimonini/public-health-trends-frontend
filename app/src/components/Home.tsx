@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Container, Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, VStack, Code } from "native-base";
 import NativeBaseIcon from "@components/NativeBaseIcon";
-import VictoryChart from "./components/VictoryChart";
+// import VictoryChart from "./components/VictoryChart";
 import SplayData from "@components/SplayData";
 import API from "@utils/API";
 
