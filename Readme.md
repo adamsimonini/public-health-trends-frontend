@@ -12,6 +12,8 @@ The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
 
 4. ### [React Navigation](https://reactnavigation.org/)
 
+5. ### [Async Storage](https://react-native-async-storage.github.io/async-storage/docs/usage)
+
 ## Themes (Dark Mode)
 
 NativeBase has a wealth of theming functionality. See [here](https://docs.nativebase.io/3.0.x/color-mode) for details.
@@ -24,10 +26,18 @@ Globally install the [expo cli](https://www.npmjs.com/package/expo-cli)
   npm i -g expo-cli
 ```
 
-Currently, docker-compose does not work. To run the app via npm, change directory to ./app, then run the following
+Globally install the [yarn package manager](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
 ```
-npm start
+  npm install --global yarn
+```
+
+To run the app via yarn, change directory to ./app, then run one of the following
+
+```
+  yarn web
+  yarn run web
+  yarn run android
 ```
 
 ### Web version
@@ -53,5 +63,5 @@ You can clear expo's cache with the following command:
 There is an unfortunate issue with react-native-reanimated and Android. I cannot use version 2.x, and instead have to use version 1.x. What is more, I needed to apply the following code to node-modules/react-native-reanimated/src/Animated.js. Everyone will have to do this if they want to test their code on Android. For now it works, but I'll have to find a better solution later.
 
 ```
-global.__reanimatedWorkletInit = () => {};
+  global.\_\_reanimatedWorkletInit = () => {};
 ```
