@@ -58,6 +58,6 @@ export const BaseTheme = extendTheme({
 
 	config: {
 		// Changing initialColorMode to 'dark'
-		initialColorMode: "light"
+		initialColorMode: "dark"
 	}
 });

@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import LanguageToggle from "@components/Navigation/LanguageToggle";
 import { ThemeToggle } from "@theme/ThemeToggle";
 import ScreenHeading from "@components/ScreenHeading";
+import LocationPanel from "@components/LocationSelection/LocationPanel";
 
 function Home() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
@@ -18,12 +19,19 @@ function Home() {
 	const { t } = useTranslation();
 
 	return (
-		// <Container w="100%" h="100%">
-		<VStack space={4} alignItems="center">
-			<ScreenHeading translationKey="home" />
-			<Center w="64" h="20" bg="canRed.50" rounded="md" shadow={3}></Center>
-		</VStack>
-		// </Container>
+		<>
+			<Center>
+				<ScreenHeading translationKey="home" />
+			</Center>
+			<Center>
+				<HStack h="100%">
+					<VStack space={4} alignItems="center">
+						<LocationPanel />
+					</VStack>
+					<Center h="100%" bg="primary.300" rounded="md" shadow={3} />
+				</HStack>
+			</Center>
+		</>
 	);
 }
 

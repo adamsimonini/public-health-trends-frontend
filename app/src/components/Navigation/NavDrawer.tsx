@@ -22,23 +22,6 @@ if (Platform.OS === "android") {
 	}
 }
 
-function Component({ route }) {
-	const { t } = useTranslation();
-	return (
-		<Flex direction="column" h="100%">
-			<Center>
-				<Text mt="12" fontSize="18">
-					This is the{" "}
-					<Text bold fontSize="18">
-						{route.name}
-					</Text>{" "}
-					page!
-				</Text>
-			</Center>
-		</Flex>
-	);
-}
-
 const getIcon = (screenName: any) => {
 	switch (screenName) {
 		case "home":

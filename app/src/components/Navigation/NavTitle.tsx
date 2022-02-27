@@ -11,6 +11,7 @@ function NavTitle() {
 		<Box w="100%" flex="1">
 			<VStack space={2.5} w="100%" px="3">
 				<Flex
+					w="100%"
 					direction="row"
 					mb="2.5"
 					mt="1.5"

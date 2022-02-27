@@ -13,20 +13,26 @@ function LocationPannel() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	// const { colorMode, toggleColorMode } = useColorMode();
 	const [locations, setLocationsData] = useState(["A0A", "B1B", "C2C"]);
+	// controlled components: https://reactjs.org/docs/forms.html#controlled-components
+	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
-	let locationInput = React.createRef();
+	// let locationInput = React.createRef();
 
-	const addLocation = (location: string) => {
-		if (location) {
-			if (!locations.includes(location.toUpperCase())) {
-				let newLocations = [...locations, location.toUpperCase()];
+	useEffect(() => {
+		loadLocations();
+	}, []);
+
+	const addLocation = () => {
+		if (locationValue) {
+			if (!locations.includes(locationValue.toUpperCase())) {
+				let newLocations = [...locations, locationValue.toUpperCase()];
 				setLocationsData(newLocations);
 			} else {
-				console.error(`Error - ${location} is already within the locations array`);
+				console.log(`Error - ${locationValue} is already within the locations array`);
 			}
 		} else {
-			console.error("Error - no location provided");
+			console.log("Error - no location provided");
 		}
 	};
 
@@ -49,7 +55,7 @@ function LocationPannel() {
 			if (data !== null && data != undefined) {
 				console.log(data);
 			} else {
-				console.error(`Error - Async Storage failed to find a value for this key: ${value}`);
+				console.log(`Error - Async Storage failed to find a value for this key: ${value}`);
 			}
 		} catch (e) {
 			console.log(e);
@@ -61,21 +67,11 @@ function LocationPannel() {
 		await storeData("locations", storedLocations);
 	};
 
-	const buttonDisabler = () => {
-		console.log(locationInput.current.value);
-		if (locationInput.current.value) {
-			setDisableAddButton(false);
-		} else {
-			setDisableAddButton(true);
-		}
-	};
-
-	useEffect(() => {
-		loadLocations();
-	}, []);
-
-	const handleInputChange = () => {
-		if (locationInput.current.value) {
+	const handleInputChange = e => {
+		setLocationValue(e);
+		console.log(locationValue);
+		// console.log(e.target.value);
+		if (e) {
 			setDisableAddButton(false);
 		} else {
 			setDisableAddButton(true);
@@ -91,7 +87,7 @@ function LocationPannel() {
 				{/* add isInvalid to FormControl to prompt error message */}
 				<FormControl w="75%" maxW="300px">
 					<FormControl.Label mt="5">Enter the first 3 characters of a postal code:</FormControl.Label>
-					<Input ref={locationInput} onChangeText={handleInputChange} mt="5" placeholder="A0A" variant="outline" isRequired />
+					<Input maxLength={3} value={locationValue} onChangeText={handleInputChange} mt="5" placeholder="A0A" variant="outline" isRequired />
 					<FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>Try different from previous passwords.</FormControl.ErrorMessage>
 				</FormControl>
 				<Button
@@ -100,7 +96,7 @@ function LocationPannel() {
 					mb="5"
 					w="75%"
 					onPress={() => {
-						addLocation(locationInput.current.value);
+						addLocation();
 					}}
 					leftIcon={<Icon name="plus" as={FontAwesome} size="sm" />}
 				>

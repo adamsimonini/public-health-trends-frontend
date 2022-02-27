@@ -30,10 +30,9 @@ export default function Root(props) {
 	};
 
 	return (
-		<NavigationContainer theme={phtTheme} linking={linking}>
+		<NavigationContainer theme={phtTheme} linking={linking} w="100%">
 			<Box
 				flex={1}
-				w="100%"
 				_web={{
 					overflowX: "hidden"
 				}}

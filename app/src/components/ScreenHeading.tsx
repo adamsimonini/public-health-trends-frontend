@@ -7,11 +7,9 @@ const ScreenHeading = props => {
 	const { t } = useTranslation();
 
 	return (
-		<>
-			<Heading size="lg" mt="5">
-				{t(props.translationKey)}
-			</Heading>
-		</>
+		<Heading size="lg" my="5">
+			{t(props.translationKey)}
+		</Heading>
 	);
 };
 
