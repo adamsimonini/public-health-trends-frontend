@@ -12,22 +12,21 @@ import Locations from "screens/Locations";
 function LocationPannel() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	// const { colorMode, toggleColorMode } = useColorMode();
-	const [locations, setLocationsData] = useState(["A0A", "B1B", "C2C"]);
+	const [locations, setLocationsData] = useState([]);
 	// controlled components: https://reactjs.org/docs/forms.html#controlled-components
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
 	// let locationInput = React.createRef();
 
-	useEffect(() => {
-		loadLocations();
-	}, []);
-
-	const addLocation = () => {
+	const addLocation = async () => {
 		if (locationValue) {
 			if (!locations.includes(locationValue.toUpperCase())) {
 				let newLocations = [...locations, locationValue.toUpperCase()];
-				setLocationsData(newLocations);
+				await storeData("locations", newLocations);
+				await getData("locations");
+				await setLocationsData(newLocations);
+				setLocationValue("");
 			} else {
 				console.log(`Error - ${locationValue} is already within the locations array`);
 			}
@@ -36,14 +35,16 @@ function LocationPannel() {
 		}
 	};
 
-	const removeLocation = (location: string) => {
+	const removeLocation = async (location: string) => {
 		let newLocations: string[] = locations.filter(e => e !== location);
-		setLocationsData(newLocations);
+		await setLocationsData(newLocations);
+		await storeData("locations", newLocations);
 	};
 
 	const storeData = async (key: any, value: any) => {
 		try {
-			await AsyncStorage.setItem(key, value);
+			// ensure the data is stored as a JSON, so it can be reversed: https://www.w3schools.com/js/js_json_stringify.asp
+			await AsyncStorage.setItem(key, JSON.stringify(value));
 		} catch (e) {
 			// saving error
 		}
@@ -53,7 +54,7 @@ function LocationPannel() {
 		try {
 			const data = await AsyncStorage.getItem(value);
 			if (data !== null && data != undefined) {
-				console.log(data);
+				return data;
 			} else {
 				console.log(`Error - Async Storage failed to find a value for this key: ${value}`);
 			}
@@ -64,13 +65,15 @@ function LocationPannel() {
 
 	const loadLocations = async () => {
 		const storedLocations = await getData("locations");
-		await storeData("locations", storedLocations);
+		await setLocationsData(JSON.parse(storedLocations));
 	};
+
+	useEffect(() => {
+		loadLocations();
+	}, []);
 
 	const handleInputChange = e => {
 		setLocationValue(e);
-		console.log(locationValue);
-		// console.log(e.target.value);
 		if (e) {
 			setDisableAddButton(false);
 		} else {
