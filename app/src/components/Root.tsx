@@ -5,6 +5,7 @@ import NavDrawer from "@components/Navigation/NavDrawer";
 import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
+import DesktopTab from "@components/Tabs/DesktopTabs";
 
 // configuring links: https://reactnavigation.org/docs/configuring-links/
 const prefix = Linking.createURL("/");
@@ -30,14 +31,15 @@ export default function Root(props) {
 	};
 
 	return (
-		<NavigationContainer theme={phtTheme} linking={linking} w="100%">
+		<NavigationContainer theme={phtTheme} linking={linking}>
+			{/* <DesktopTab /> */}
 			<Box
+				w="100%"
 				flex={1}
 				_web={{
 					overflowX: "hidden"
 				}}
 			>
-				{/* <LanguageToggle /> */}
 				<NavDrawer />
 				<ThemeToggle />
 			</Box>

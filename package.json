@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "expo-localization": "^12.0.1",
-    "i18n-js": "^3.8.0",
-    "i18next": "^21.6.11"
-  }
-}

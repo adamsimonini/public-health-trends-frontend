@@ -30,6 +30,13 @@ export const BaseTheme = extendTheme({
 			}
 		}
 	},
+	breakpoints: {
+		base: 0,
+		sm: 480,
+		md: 768,
+		lg: 992,
+		xl: 1280
+	},
 	colors: {
 		// Add new color
 		canRed: {
@@ -58,6 +65,6 @@ export const BaseTheme = extendTheme({
 
 	config: {
 		// Changing initialColorMode to 'dark'
-		initialColorMode: "dark"
+		initialColorMode: "light"
 	}
 });

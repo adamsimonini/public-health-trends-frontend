@@ -20,6 +20,7 @@ function Locations() {
 				<ScreenHeading translationKey="locations" />
 			</Center>
 			<LocationPanel />
+			<LocationPanel />
 		</>
 	);
 }

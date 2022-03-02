@@ -26,6 +26,7 @@ function LocationPannel() {
 				await storeData("locations", newLocations);
 				await getData("locations");
 				await setLocationsData(newLocations);
+				setDisableAddButton(true);
 				setLocationValue("");
 			} else {
 				console.log(`Error - ${locationValue} is already within the locations array`);
@@ -46,7 +47,7 @@ function LocationPannel() {
 			// ensure the data is stored as a JSON, so it can be reversed: https://www.w3schools.com/js/js_json_stringify.asp
 			await AsyncStorage.setItem(key, JSON.stringify(value));
 		} catch (e) {
-			// saving error
+			console.log(e);
 		}
 	};
 
@@ -65,7 +66,9 @@ function LocationPannel() {
 
 	const loadLocations = async () => {
 		const storedLocations = await getData("locations");
-		await setLocationsData(JSON.parse(storedLocations));
+		if (storedLocations) {
+			await setLocationsData(JSON.parse(storedLocations));
+		}
 	};
 
 	useEffect(() => {
@@ -74,11 +77,7 @@ function LocationPannel() {
 
 	const handleInputChange = e => {
 		setLocationValue(e);
-		if (e) {
-			setDisableAddButton(false);
-		} else {
-			setDisableAddButton(true);
-		}
+		e.length === 3 ? setDisableAddButton(false) : setDisableAddButton(true);
 	};
 
 	// validation https://docs.nativebase.io/form

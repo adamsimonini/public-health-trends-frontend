@@ -13,7 +13,6 @@ import Info from "@screens/Info";
 import Locations from "@screens/Locations";
 import Home from "@screens/Home";
 import Diseases from "@screens/Diseases";
-import DesktopTab from "@components/Tabs/DesktopTabs";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,7 +37,7 @@ const getIcon = (screenName: any) => {
 		case "settings":
 			return "cog-outline";
 		default:
-			return "help";
+			return "home";
 	}
 };
 function CustomDrawerContent(props: any) {

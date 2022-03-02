@@ -1,8 +1,8 @@
-# Public Health Trends Frontend App in React Native & TypeScript
+# **Public Health Trends Frontend App in React Native & TypeScript**
 
 The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
 
-## Technologies
+## **Technologies**
 
 1. ### [React Native](https://reactnative.dev/docs/intro-react-native-components)
 
@@ -14,11 +14,16 @@ The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
 
 5. ### [Async Storage](https://react-native-async-storage.github.io/async-storage/docs/usage)
 
-## Themes (Dark Mode)
+## **Themes (Dark Mode)**
 
 NativeBase has a wealth of theming functionality. See [here](https://docs.nativebase.io/3.0.x/color-mode) for details.
 
-## Development Instructions
+Our theme file can be found in "./app/src/theme/index.ts"
+
+Values found here are exposed to the entire app via hooks like "useColorMode" and "useBreakpointValue".
+These hooks allow us to add "theme-aware" logic to our JSX components.
+
+## **Development Instruction**
 
 Globally install the [expo cli](https://www.npmjs.com/package/expo-cli)
 
@@ -32,27 +37,36 @@ Globally install the [yarn package manager](https://classic.yarnpkg.com/lang/en/
   npm install --global yarn
 ```
 
-To run the app via yarn, change directory to ./app, then run one of the following
+From "./app", run the following to install the packages into the "node_modules" folder:
 
 ```
-  yarn web
+  yarn install
+```
+
+While still in "./app" then run one of the following to start the app:
+
+```
+  yarn run
   yarn run web
   yarn run android
 ```
 
-### Web version
+### **Responsiveness**
 
-When given the option, press "w" to run the web version of the app.
+With the useBreakpointsValue hook, you can define how the app should look at different breakpoints. See "flexDir" on the Home.tsx file.
 
-### Phone versions
+### **Phone versions**
 
-You can also try to android version, but you'll need to access it through one of two ways:
+Download the expo app from the Google Play or Apple Store on your phone. When you run the web version, it will generate a QR code.
+Activate the camera within the Expo app to read the QR code. The app will bundle and be loaded onto your phone. It supports hot reload.
+
+You can also use Android Studio with an Android Virtual Device to run the app on an emulated Android device, as described below. For further details please lookup guides on YouTube.
 
 1. download [Android Studio](https://developer.android.com/studio), configure it properly, add a virtual device, and have React Native display on the emulated device
 
 2. download the [Expo](https://expo.dev/client) app from the Goolge Play Store, or Expo Go from Apple's App Store, and use the QR Code generated in the CLI to get the app running on your phone
 
-### Troubleshooting
+### **Troubleshooting**
 
 You can clear expo's cache with the following command:
 
