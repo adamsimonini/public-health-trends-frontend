@@ -105,11 +105,13 @@ function LocationPannel() {
 					{t("add")}
 				</Button>
 			</Center>
-			<Center w="64" pt="5" pb="5" rounded="md" shadow={3}>
-				{locations.map((location, index) => {
-					return <LocationButton fsa={location} key={`${location}-${index}`} updateLocations={removeLocation} />;
-				})}
-			</Center>
+			{locations[0] && (
+				<Center w="64" pt="5" pb="5" rounded="md" shadow={3}>
+					{locations.map((location, index) => {
+						return <LocationButton fsa={location} key={`${location}-${index}`} updateLocations={removeLocation} />;
+					})}
+				</Center>
+			)}
 		</VStack>
 		// </Container>
 	);

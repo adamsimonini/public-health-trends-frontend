@@ -14,7 +14,7 @@ import ScreenHeading from "@components/ScreenHeading";
 import LocationPanel from "@components/LocationSelection/LocationPanel";
 import { Foundation, Feather } from "@expo/vector-icons";
 import DesktopHome from "@components/DesktopHome";
-import DesktopTab from "@components/Tabs/DesktopTabs";
+import HomeTab from "@components/Tabs/HomeTab";
 
 function Home() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
@@ -52,9 +52,8 @@ function Home() {
 						<LocationPanel />
 					</Box>
 				)}
-				{/* <Divider /> */}
 				<Box w={tabWidth}>
-					<DesktopTab />
+					<HomeTab />
 				</Box>
 				{/* <DesktopTab /> */}
 				{/* <View
