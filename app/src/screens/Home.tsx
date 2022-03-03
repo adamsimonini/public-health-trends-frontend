@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import LanguageToggle from "@components/Navigation/LanguageToggle";
 import { ThemeToggle } from "@theme/ThemeToggle";
 import ScreenHeading from "@components/ScreenHeading";
-import LocationPanel from "@components/LocationSelection/LocationPanel";
+import FilterPanel from "@components/Filters/FilterPanel";
 import { Foundation, Feather } from "@expo/vector-icons";
 import DesktopHome from "@components/DesktopHome";
 import HomeTab from "@components/Tabs/HomeTab";
@@ -38,7 +38,7 @@ function Home() {
 	});
 
 	return (
-		<ScrollView showsVerticalScrollIndicator={true} px="10%">
+		<ScrollView showsVerticalScrollIndicator={true} px="5%">
 			<Center>
 				<ScreenHeading translationKey="home" />
 			</Center>
@@ -49,7 +49,7 @@ function Home() {
 						<Center>
 							<Heading size="lg">{t("filters")}</Heading>
 						</Center>
-						<LocationPanel />
+						<FilterPanel />
 					</Box>
 				)}
 				<Box w={tabWidth}>

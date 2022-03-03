@@ -5,7 +5,6 @@ import NavDrawer from "@components/Navigation/NavDrawer";
 import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
-import DesktopTab from "@components/Tabs/DesktopTabs";
 
 // configuring links: https://reactnavigation.org/docs/configuring-links/
 const prefix = Linking.createURL("/");

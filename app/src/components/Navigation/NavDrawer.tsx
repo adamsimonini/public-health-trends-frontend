@@ -13,7 +13,7 @@ import Info from "@screens/Info";
 import Locations from "@screens/Locations";
 import Home from "@screens/Home";
 import Diseases from "@screens/Diseases";
-import DesktopTab from "@components/Tabs/DesktopTabs";
+import DesktopTab from "components/Tabs/HomeTab";
 
 const Drawer = createDrawerNavigator();
 

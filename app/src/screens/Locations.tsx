@@ -7,7 +7,7 @@ import { Container, Input, FormControl, Switch, useColorMode, WarningOutlineIcon
 import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
 import ScreenHeading from "@components/ScreenHeading";
-import LocationPanel from "@components/LocationSelection/LocationPanel";
+import LocationPanel from "@components/Filters/Location/LocationFilter";
 
 function Locations() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value

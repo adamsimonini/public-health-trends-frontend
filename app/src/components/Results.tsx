@@ -1,7 +1,8 @@
+import * as React from "react";
 import { useColorMode, useBreakpointValue, useColorModeValue, Text } from "native-base";
 import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
 
-function Victory() {
+function Results() {
 	return (
 		<>
 			<Text>RESULTS</Text>
@@ -9,4 +10,4 @@ function Victory() {
 	);
 }
 
-export default Victory;
+export default Results;
