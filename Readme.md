@@ -79,3 +79,5 @@ There is an unfortunate issue with react-native-reanimated and Android. I cannot
 ```
   global.\_\_reanimatedWorkletInit = () => {};
 ```
+
+Since we're only using Android Studio for device emulation, if there is an error with your emulator (e.g., I lost mine and could not get it back due to corruption within the Android Studio project), simply start a new Android Studio project. This will create a new emulator for you.

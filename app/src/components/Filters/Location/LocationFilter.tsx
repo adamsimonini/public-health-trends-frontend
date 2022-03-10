@@ -85,7 +85,7 @@ function LocationFilter() {
 	return (
 		<Box w="100%">
 			<Center w="100%">
-				<FormControl w="75%" isRequired>
+				<FormControl w="75%">
 					<FormControl.Label mt="5">Enter the first 3 characters of a postal code:</FormControl.Label>
 					<Input maxLength={3} value={locationValue} onChangeText={handleInputChange} mt="5" placeholder="A0A" variant="outline" isRequired />
 					<FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>Input invalid. Please input the first 3 characters of a postal code.</FormControl.ErrorMessage>

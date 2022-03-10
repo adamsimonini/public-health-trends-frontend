@@ -8,6 +8,7 @@ import Home from "@screens/Home";
 import Diseases from "@screens/Diseases";
 import FilterPanel from "@components/Filters/FilterPanel";
 import Results from "@components/Results";
+import Map from "@components/Map";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -34,7 +35,7 @@ export default function DesktopHomeTabs() {
 	return (
 		<Tab.Navigator {...{ screenOptions }}>
 			{showFilterTab && <Tab.Screen name="filters" component={FilterPanel} />}
-			<Tab.Screen name="map" component={Info} />
+			<Tab.Screen name="map" component={Map} />
 			<Tab.Screen name="results" component={Results} />
 		</Tab.Navigator>
 	);

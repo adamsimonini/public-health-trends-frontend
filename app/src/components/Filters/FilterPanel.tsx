@@ -6,9 +6,9 @@ import DiseaseFilter from "@components/Filters/DiseaseFilter";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-function FilterPanel({ navigation }) {
+function FilterPanel() {
 	return (
-		<VStack space={4} alignItems="center" mb="5" w="100%">
+		<VStack space={4} alignItems="center" my="5">
 			<Center w="75%" rounded="md" shadow={3} py="3">
 				<LocationFilter />
 			</Center>

@@ -12,7 +12,7 @@ import Locations from "screens/Locations";
 function DiseaseFilter() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	// const { colorMode, toggleColorMode } = useColorMode();
-	const [diseases, setDiseases] = useState(["COVID-19", "HIV", "Fentanyl Use"]);
+	const [diseases, setDiseases] = useState(["COVID-19", "HIV", "Fentanyl Use", "Heart Disease", "Zika Virus"]);
 	// controlled components: https://reactjs.org/docs/forms.html#controlled-components
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
@@ -84,10 +84,10 @@ function DiseaseFilter() {
 
 	return (
 		<>
-			<FormControl w="100%%" isRequired>
+			<FormControl w="75%">
 				<FormControl.Label>Select a public health issue</FormControl.Label>
 				<Select
-					minWidth="200"
+					minWidth="100"
 					accessibilityLabel="Choose an issue"
 					placeholder="Choose an issue"
 					_selectedItem={{
