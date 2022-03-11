@@ -9,6 +9,7 @@ import config from "@/nativebase.config";
 import intializeStore from "./src/store";
 import { Provider } from "react-redux";
 
+// const store = createStore(allReducers);
 const store = intializeStore();
 
 // expo's localization solution: https://docs.expo.dev/versions/latest/sdk/localization/

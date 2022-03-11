@@ -12,13 +12,14 @@ module.exports = function (api) {
 				extensions: [".ios.ts", ".android.ts", ".ts", ".ios.tsx", ".android.tsx", ".tsx", ".jsx", ".js", ".json"],
 				alias: {
 					tests: ["./tests/"],
-					"@components": "./src/components",
-					"@theme": "./src/theme",
-					"@utils": "./src/utils",
-					"@translation": "./src/translation",
-					"@screens": "./src/screens",
+					"@": "./",
 					"@assets": "./assets",
-					"@": "./"
+					"@components": "./src/components",
+					"@screens": "./src/screens",
+					"@store": "./src/store",
+					"@theme": "./src/theme",
+					"@translation": "./src/translation",
+					"@utils": "./src/utils",
 				}
 			}
 		]

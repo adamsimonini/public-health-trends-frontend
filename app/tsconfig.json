@@ -5,15 +5,16 @@
 	"compilerOptions": {
 		"paths": {
 			"*": ["src/*"],
-			"tests": ["tests/*"],
-			"@navigation/*": ["./src/navigation/*"],
+			"@/*": ["./*"],
+			"@assets/*": ["./assets/*"],
 			"@components/*": ["./src/components/*"],
-			"@utils/*": ["./src/utils/*"],
+			"@navigation/*": ["./src/navigation/*"],
+			"@screens/*": ["./src/screens/*"],
+			"@store/*": ["./src/store/*"],
+			"tests": ["tests/*"],
 			"@theme/*": ["./src/theme/*"],
 			"@translation/*": ["./src/translation/*"],
-			"@screens/*": ["./src/screens/*"],
-			"@assets/*": ["./assets/*"],
-			"@/*": ["./*"]
+			"@utils/*": ["./src/utils/*"]
 		},
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
