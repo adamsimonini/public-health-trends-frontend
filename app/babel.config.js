@@ -19,7 +19,7 @@ module.exports = function (api) {
 					"@store": "./src/store",
 					"@theme": "./src/theme",
 					"@translation": "./src/translation",
-					"@utils": "./src/utils",
+					"@utils": "./src/utils"
 				}
 			}
 		]

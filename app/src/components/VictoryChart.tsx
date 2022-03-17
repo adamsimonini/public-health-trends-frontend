@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Victory from "@utils/victory";
+import V from "@utils/victory";
 
 const data = [
 	{ quarter: 1, earnings: 13000 },
@@ -10,15 +10,11 @@ const data = [
 ];
 
 function Chart() {
-	// platformSpecificCharting().then(data => {
-	// 	t = data;
-	// });
-	// const VictoryVersion = Platform.OS === "web" ? VictoryNative : VictoryNative;
 	return (
 		<View style={styles.container}>
-			<Victory.VictoryChart width={350} theme={Victory.VictoryTheme.material}>
-				<Victory.VictoryBar data={data} x="quarter" y="earnings" />
-			</Victory.VictoryChart>
+			<V.VictoryChart width={350} theme={V.VictoryTheme.material}>
+				<V.VictoryBar data={data} x="quarter" y="earnings" />
+			</V.VictoryChart>
 		</View>
 	);
 }

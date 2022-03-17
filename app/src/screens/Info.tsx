@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 import LanguageToggle from "@components/Navigation/LanguageToggle";
 import { ThemeToggle } from "@theme/ThemeToggle";
 import ScreenHeading from "@components/ScreenHeading";
-import VictoryChart from "@components/VictoryChart";
 
 function Info() {
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
@@ -23,7 +22,6 @@ function Info() {
 		<VStack space={4} alignItems="center">
 			<ScreenHeading translationKey="info" />
 			<Center w="64" h="20" bg="canRed.50" rounded="md" shadow={3}></Center>
-			<VictoryChart />
 		</VStack>
 		// </Container>
 	);
