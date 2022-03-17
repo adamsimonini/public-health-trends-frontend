@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Input, FormControl, Switch, useColorMode, WarningOutlineIcon, useColorModeValue, View, Flex, Spacer, Image, Button, Box, HamburgerIcon, Pressable, Heading, VStack, Text, Center, HStack, Divider, Icon, extendTheme } from "native-base";
+import { Input, FormControl, WarningOutlineIcon, Button, Box, Center, Icon } from "native-base";
 import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
 import LocationButton from "@components/Filters/Location/LocationButton";

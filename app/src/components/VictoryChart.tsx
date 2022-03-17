@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
+import Victory from "@utils/victory";
 
 const data = [
 	{ quarter: 1, earnings: 13000 },
@@ -9,17 +9,19 @@ const data = [
 	{ quarter: 4, earnings: 19000 }
 ];
 
-function Victory() {
+function Chart() {
+	// platformSpecificCharting().then(data => {
+	// 	t = data;
+	// });
+	// const VictoryVersion = Platform.OS === "web" ? VictoryNative : VictoryNative;
 	return (
 		<View style={styles.container}>
-			<VictoryChart width={350} theme={VictoryTheme.material}>
-				<VictoryBar data={data} x="quarter" y="earnings" />
-			</VictoryChart>
+			<Victory.VictoryChart width={350} theme={Victory.VictoryTheme.material}>
+				<Victory.VictoryBar data={data} x="quarter" y="earnings" />
+			</Victory.VictoryChart>
 		</View>
 	);
 }
-
-export default Victory;
 
 const styles = StyleSheet.create({
 	container: {
@@ -29,3 +31,5 @@ const styles = StyleSheet.create({
 		backgroundColor: "#f5fcff"
 	}
 });
+
+export default Chart;

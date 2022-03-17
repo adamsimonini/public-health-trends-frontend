@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { useColorMode, VStack, HStack, Center, useBreakpointValue, useColorModeValue, Text, Heading, Button } from "native-base";
+import { VStack, Center, Text, Button } from "native-base";
 import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
 import LocationFilter from "@components/Filters/Location/LocationFilter";
 import DiseaseFilter from "@components/Filters/DiseaseFilter";

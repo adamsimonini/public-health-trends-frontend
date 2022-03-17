@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import counter from "./counter";
+import lcoations from "./locations";
 
 const rootReducer = combineReducers({
-	counter
+	counter,
+	lcoations
 });
 
 export default rootReducer;
