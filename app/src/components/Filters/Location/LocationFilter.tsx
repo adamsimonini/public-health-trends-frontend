@@ -6,10 +6,15 @@ import LocationButton from "@components/Filters/Location/LocationButton";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Locations from "screens/Locations";
+import { useSelector, useDispatch } from "react-redux";
+import Actions from "@store/actions/";
 
 // https://react-native-async-storage.github.io/async-storage/docs/usage
 
 function LocationFilter() {
+	const counter = useSelector(state => state.counter);
+	const storeLocations = useSelector(state => state.location);
+	const dispatch = useDispatch();
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	// const { colorMode, toggleColorMode } = useColorMode();
 	const [locations, setLocationsData] = useState([]);
@@ -22,12 +27,13 @@ function LocationFilter() {
 	const addLocation = async () => {
 		if (locationValue) {
 			if (!locations.includes(locationValue.toUpperCase())) {
+				setDisableAddButton(true);
+				setLocationValue("");
 				let newLocations = [...locations, locationValue.toUpperCase()];
 				await storeData("locations", newLocations);
 				await getData("locations");
 				await setLocationsData(newLocations);
-				setDisableAddButton(true);
-				setLocationValue("");
+				await dispatch(Actions.addLocation([...newLocations]));
 			} else {
 				console.log(`Error - ${locationValue} is already within the locations array`);
 			}
@@ -40,6 +46,7 @@ function LocationFilter() {
 		let newLocations: string[] = locations.filter(e => e !== location);
 		await setLocationsData(newLocations);
 		await storeData("locations", newLocations);
+		await dispatch(Actions.addLocation(newLocations));
 	};
 
 	const storeData = async (key: any, value: any) => {
@@ -103,11 +110,11 @@ function LocationFilter() {
 					{t("add")}
 				</Button>
 
-				{locations[0] && (
+				{storeLocations[0] && (
 					<Center>
 						{/* <Center w="64" pt="5" pb="5" rounded="md" shadow={3}> */}
-						{locations.map((location, index) => {
-							return <LocationButton fsa={location} key={`${location}-${index}`} updateLocations={removeLocation} />;
+						{storeLocations.map((location, index) => {
+							return <LocationButton fsa={location} key={`${location}-${index}`} removeLocation={removeLocation} />;
 						})}
 						{/* </Center> */}
 					</Center>
