@@ -22,25 +22,6 @@ function LocationFilter() {
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
-	// let locationInput = React.createRef();
-
-	// const addLocation = async () => {
-	// 	if (locationValue) {
-	// 		if (!storeLocations.includes(locationValue.toUpperCase())) {
-	// 			setDisableAddButton(true);
-	// 			setLocationValue("");
-	// 			let newLocations = [...locations, locationValue.toUpperCase()];
-	// 			await storeData("locations", newLocations);
-	// 			await getData("locations");
-	// 			await setLocationsData(newLocations);
-	// 			await dispatch(Actions.addLocation([...newLocations]));
-	// 		} else {
-	// 			console.log(`Error - ${locationValue} is already within the locations array`);
-	// 		}
-	// 	} else {
-	// 		console.log("Error - no location provided");
-	// 	}
-	// };
 
 	const removeLocation = async (location: string) => {
 		// let newLocations: string[] = locations.filter(e => e !== location);
@@ -71,16 +52,16 @@ function LocationFilter() {
 		}
 	};
 
-	const loadLocations = async () => {
-		const storedLocations = await getData("locations");
-		if (storedLocations) {
-			await setLocationsData(JSON.parse(storedLocations));
-		}
-	};
+	// const loadLocations = async () => {
+	// 	const storedLocations = await getData("locations");
+	// 	if (storedLocations) {
+	// 		await setLocationsData(JSON.parse(storedLocations));
+	// 	}
+	// };
 
-	useEffect(() => {
-		loadLocations();
-	}, []);
+	// useEffect(() => {
+	// 	loadLocations();
+	// }, []);
 
 	const handleInputChange = e => {
 		setLocationValue(e);
