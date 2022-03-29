@@ -10,8 +10,9 @@ export function addLocation(data) {
 	};
 }
 
-export function removeLocation() {
+export function removeLocation(data) {
 	return {
-		type: REMOVE_LOCATION
+		type: REMOVE_LOCATION,
+		payload: data
 	};
 }

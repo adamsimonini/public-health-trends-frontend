@@ -28,7 +28,6 @@ function FilterPanel() {
 			<Button
 				onPress={() => {
 					dispatch(Actions.increment());
-					dispatch(Actions.addLocation("Z1Z"));
 				}}
 			>
 				See results
