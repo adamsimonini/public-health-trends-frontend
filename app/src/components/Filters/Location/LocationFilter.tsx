@@ -5,11 +5,16 @@ import { useTranslation } from "react-i18next";
 import LocationButton from "@components/Filters/Location/LocationButton";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Locations from "screens/Locations";
+// import Locations from "screens/Locations";
+import { useSelector, useDispatch } from "react-redux";
+import Actions from "@store/actions/";
 
 // https://react-native-async-storage.github.io/async-storage/docs/usage
 
 function LocationFilter() {
+	const counter = useSelector(state => state.counter);
+	const storeLocations = useSelector(state => state.location);
+	const dispatch = useDispatch();
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	// const { colorMode, toggleColorMode } = useColorMode();
 	const [locations, setLocationsData] = useState([]);
@@ -17,29 +22,12 @@ function LocationFilter() {
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
-	// let locationInput = React.createRef();
-
-	const addLocation = async () => {
-		if (locationValue) {
-			if (!locations.includes(locationValue.toUpperCase())) {
-				let newLocations = [...locations, locationValue.toUpperCase()];
-				await storeData("locations", newLocations);
-				await getData("locations");
-				await setLocationsData(newLocations);
-				setDisableAddButton(true);
-				setLocationValue("");
-			} else {
-				console.log(`Error - ${locationValue} is already within the locations array`);
-			}
-		} else {
-			console.log("Error - no location provided");
-		}
-	};
 
 	const removeLocation = async (location: string) => {
-		let newLocations: string[] = locations.filter(e => e !== location);
-		await setLocationsData(newLocations);
-		await storeData("locations", newLocations);
+		// let newLocations: string[] = locations.filter(e => e !== location);
+		// await setLocationsData(newLocations);
+		// await storeData("locations", newLocations);
+		await dispatch(Actions.removeLocation(location));
 	};
 
 	const storeData = async (key: any, value: any) => {
@@ -64,16 +52,16 @@ function LocationFilter() {
 		}
 	};
 
-	const loadLocations = async () => {
-		const storedLocations = await getData("locations");
-		if (storedLocations) {
-			await setLocationsData(JSON.parse(storedLocations));
-		}
-	};
+	// const loadLocations = async () => {
+	// 	const storedLocations = await getData("locations");
+	// 	if (storedLocations) {
+	// 		await setLocationsData(JSON.parse(storedLocations));
+	// 	}
+	// };
 
-	useEffect(() => {
-		loadLocations();
-	}, []);
+	// useEffect(() => {
+	// 	loadLocations();
+	// }, []);
 
 	const handleInputChange = e => {
 		setLocationValue(e);
@@ -96,18 +84,23 @@ function LocationFilter() {
 					mb="5"
 					w="75%"
 					onPress={() => {
-						addLocation();
+						let upperCaseLocation = locationValue.toUpperCase();
+						if (!storeLocations.includes(upperCaseLocation)) {
+							dispatch(Actions.addLocation(upperCaseLocation));
+						} else {
+							console.log(`Error - ${upperCaseLocation} is already within the locations array`);
+						}
 					}}
 					leftIcon={<Icon name="plus" as={FontAwesome} size="sm" />}
 				>
 					{t("add")}
 				</Button>
 
-				{locations[0] && (
+				{storeLocations[0] && (
 					<Center>
 						{/* <Center w="64" pt="5" pb="5" rounded="md" shadow={3}> */}
-						{locations.map((location, index) => {
-							return <LocationButton fsa={location} key={`${location}-${index}`} updateLocations={removeLocation} />;
+						{storeLocations.map((location, index) => {
+							return <LocationButton fsa={location} key={`${location}-${index}`} removeLocation={removeLocation} />;
 						})}
 						{/* </Center> */}
 					</Center>
