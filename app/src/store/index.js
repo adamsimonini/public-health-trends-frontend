@@ -9,7 +9,6 @@ import thunk from "redux-thunk";
 import invariant from "redux-immutable-state-invariant";
 import rootReducer from "./reducers";
 import * as actionCreators from "./actions/counter";
-import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 
 const persistConfig = {

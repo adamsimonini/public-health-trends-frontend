@@ -4,64 +4,25 @@ import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
 import LocationButton from "@components/Filters/Location/LocationButton";
 import { FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-// import Locations from "screens/Locations";
 import { useSelector, useDispatch } from "react-redux";
 import Actions from "@store/actions/";
 
-// https://react-native-async-storage.github.io/async-storage/docs/usage
+// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
+// const { colorMode, toggleColorMode } = useColorMode();
+// controlled components: https://reactjs.org/docs/forms.html#controlled-components
 
 function LocationFilter() {
 	const counter = useSelector(state => state.counter);
 	const storeLocations = useSelector(state => state.location);
 	const dispatch = useDispatch();
-	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
-	// const { colorMode, toggleColorMode } = useColorMode();
 	const [locations, setLocationsData] = useState([]);
-	// controlled components: https://reactjs.org/docs/forms.html#controlled-components
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
 
 	const removeLocation = async (location: string) => {
-		// let newLocations: string[] = locations.filter(e => e !== location);
-		// await setLocationsData(newLocations);
-		// await storeData("locations", newLocations);
 		await dispatch(Actions.removeLocation(location));
 	};
-
-	const storeData = async (key: any, value: any) => {
-		try {
-			// ensure the data is stored as a JSON, so it can be reversed: https://www.w3schools.com/js/js_json_stringify.asp
-			await AsyncStorage.setItem(key, JSON.stringify(value));
-		} catch (e) {
-			console.log(e);
-		}
-	};
-
-	const getData = async (value: any) => {
-		try {
-			const data = await AsyncStorage.getItem(value);
-			if (data !== null && data != undefined) {
-				return data;
-			} else {
-				console.log(`Error - Async Storage failed to find a value for this key: ${value}`);
-			}
-		} catch (e) {
-			console.log(e);
-		}
-	};
-
-	// const loadLocations = async () => {
-	// 	const storedLocations = await getData("locations");
-	// 	if (storedLocations) {
-	// 		await setLocationsData(JSON.parse(storedLocations));
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	loadLocations();
-	// }, []);
 
 	const handleInputChange = e => {
 		setLocationValue(e);
@@ -69,7 +30,6 @@ function LocationFilter() {
 	};
 
 	// validation https://docs.nativebase.io/form
-
 	return (
 		<Box w="100%">
 			<Center w="100%">
@@ -98,11 +58,9 @@ function LocationFilter() {
 
 				{storeLocations[0] && (
 					<Center>
-						{/* <Center w="64" pt="5" pb="5" rounded="md" shadow={3}> */}
 						{storeLocations.map((location, index) => {
 							return <LocationButton fsa={location} key={`${location}-${index}`} removeLocation={removeLocation} />;
 						})}
-						{/* </Center> */}
 					</Center>
 				)}
 			</Center>
