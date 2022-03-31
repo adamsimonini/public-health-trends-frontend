@@ -8,13 +8,7 @@ import DiseaseFilter from "@components/Filters/DiseaseFilter";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "@store/actions/counter";
-
-function mapStateToProps(state: any) {
-	return {
-		counter: state.counter
-	};
-}
+import Actions from "@store/actions";
 
 function FilterPanel() {
 	const counter = useSelector(state => state.counter);
@@ -31,7 +25,13 @@ function FilterPanel() {
 			<Center w="75%" rounded="md" shadow={3} py="3">
 				<DiseaseFilter />
 			</Center>
-			<Button onPress={() => dispatch(increment())}>See results</Button>
+			<Button
+				onPress={() => {
+					dispatch(Actions.increment());
+				}}
+			>
+				See results
+			</Button>
 			<Text>{counter}</Text>
 		</VStack>
 	);
