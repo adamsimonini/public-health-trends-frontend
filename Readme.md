@@ -81,3 +81,10 @@ There is an unfortunate issue with react-native-reanimated and Android. I cannot
 ```
 
 Since we're only using Android Studio for device emulation, if there is an error with your emulator (e.g., I lost mine and could not get it back due to corruption within the Android Studio project), simply start a new Android Studio project. This will create a new emulator for you.
+
+If you're running into package issues that are not installed on your local machine but seem to be apart of the project, you might want to try and get those packages using yarn. You can get them by moving into your ./app directory and running the following code. This error will likely be present when you're trying to perform a 'yarn run' command.
+
+```
+yarn
+yarn install
+```
