@@ -25,17 +25,22 @@ if (Platform.OS === "android") {
 
 const getIcon = (screenName: any) => {
 	switch (screenName) {
-		case "home":
+		case "Home":
+		case "Domicile":
 			return "home";
-		case "select-disease":
+		case "Select disease":
+		case "Sélectionnez la maladie":
 			return "virus-outline";
-		case "choose-locations":
+		case "Choose locations":
+		case "Choisir des emplacements":
 			return "map-marker";
 		case "charts":
 			return "chart-bar";
-		case "info":
+		case "Info":
+		case "Info":
 			return "information";
-		case "settings":
+		case "Settings":
+		case "Réglages":
 			return "cog-outline";
 		default:
 			return "help";
@@ -77,17 +82,18 @@ function CustomDrawerContent(props: any) {
 }
 
 function NavDrawer() {
+	const { t } = useTranslation();
 	const { colorMode, toggleColorMode } = useColorMode();
 	// using colour mode to customize UI element theming: https://docs.nativebase.io/use-color-mode-value
 	let hamburgerColour = colorMode === "dark" ? "white" : "black";
 	return (
 		<Box safeArea flex={1} w="100%">
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />} screenOptions={{ headerTintColor: hamburgerColour }}>
-				<Drawer.Screen name="home" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
-				<Drawer.Screen name="select-disease" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Diseases} />
-				<Drawer.Screen name="choose-locations" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Locations} />
-				<Drawer.Screen name="info" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Info} />
-				<Drawer.Screen name="settings" options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} />
+				<Drawer.Screen name={t("home")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
+				<Drawer.Screen name={t("selectDisease")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Diseases} />
+				<Drawer.Screen name={t("chooseLocations")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Locations} />
+				<Drawer.Screen name={t("info")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Info} />
+				<Drawer.Screen name={t("settings")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} />
 			</Drawer.Navigator>
 		</Box>
 	);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Input, FormControl, WarningOutlineIcon, Button, Box, Center, Icon } from "native-base";
+import { Input, Text, FormControl, WarningOutlineIcon, Button, Box, Center, Icon } from "native-base";
 import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
 import LocationButton from "@components/Filters/Location/LocationButton";
@@ -12,31 +12,53 @@ import Actions from "@store/actions/";
 // controlled components: https://reactjs.org/docs/forms.html#controlled-components
 
 function LocationFilter() {
-	const counter = useSelector(state => state.counter);
 	const storeLocations = useSelector(state => state.location);
 	const dispatch = useDispatch();
-	const [locations, setLocationsData] = useState([]);
+	const [showError, setShowError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 	const [locationValue, setLocationValue] = useState("");
 	const [disableAddButton, setDisableAddButton] = useState(true);
 	const { t } = useTranslation();
-
+	const fsaPattern = /[A-Z][0-9][A-Z]/;
 	const removeLocation = async (location: string) => {
 		await dispatch(Actions.removeLocation(location));
 	};
 
-	const handleInputChange = e => {
-		setLocationValue(e);
-		e.length === 3 ? setDisableAddButton(false) : setDisableAddButton(true);
-	};
+	useEffect(() => {
+		if (locationValue.length < 3) {
+			// remove the error message when the field isn't 3 characters long, but keep the button disabled
+			setShowError(false);
+			setErrorMessage("");
+			setDisableAddButton(true);
+		} else if (!fsaPattern.test(locationValue)) {
+			// if the location already exists, disable the button and throw an error explaining so.
+			setShowError(true);
+			setErrorMessage(`${locationValue} is not a valid start of a postal code. Please follow the letter, number, letter format (e.g., A1A)`);
+			setDisableAddButton(true);
+		} else if (storeLocations.includes(locationValue.toUpperCase())) {
+			// if the location already exists, disable the button and throw an error explaining so.
+			setShowError(true);
+			setErrorMessage(`${locationValue} is already included in the list below`);
+			setDisableAddButton(true);
+		} else {
+			// if no validation errors were triggered, allow the user to click the button
+			locationValue.length === 3 ? setDisableAddButton(false) : setDisableAddButton(true);
+		}
+	}),
+		[locationValue];
 
 	// validation https://docs.nativebase.io/form
 	return (
 		<Box w="100%">
 			<Center w="100%">
-				<FormControl w="75%">
-					<FormControl.Label mt="5">Enter the first 3 characters of a postal code:</FormControl.Label>
-					<Input maxLength={3} value={locationValue} onChangeText={handleInputChange} mt="5" placeholder="A0A" variant="outline" isRequired />
-					<FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>Input invalid. Please input the first 3 characters of a postal code.</FormControl.ErrorMessage>
+				<FormControl w="75%" isInvalid={showError}>
+					<FormControl.Label mt="5">{t("enterPostalCode")}</FormControl.Label>
+					<Input maxLength={3} value={locationValue.toUpperCase()} onChangeText={textInput => setLocationValue(textInput.toUpperCase())} mt="5" placeholder="A0A" variant="outline" isRequired />
+					{/* <FormControl.HelperText>I am a Helper text 😊</FormControl.HelperText> */}
+					<FormControl.ErrorMessage style={{ maxWidth: "100%" }} leftIcon={<WarningOutlineIcon size="xs" />}>
+						{/* <Text style={{ maxWidth: "100%" }}></Text> */}
+						{errorMessage}
+					</FormControl.ErrorMessage>
 				</FormControl>
 				<Button
 					isDisabled={disableAddButton}
@@ -47,8 +69,7 @@ function LocationFilter() {
 						let upperCaseLocation = locationValue.toUpperCase();
 						if (!storeLocations.includes(upperCaseLocation)) {
 							dispatch(Actions.addLocation(upperCaseLocation));
-						} else {
-							console.log(`Error - ${upperCaseLocation} is already within the locations array`);
+							setLocationValue("");
 						}
 					}}
 					leftIcon={<Icon name="plus" as={FontAwesome} size="sm" />}

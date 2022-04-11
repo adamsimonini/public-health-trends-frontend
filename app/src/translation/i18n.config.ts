@@ -1,3 +1,5 @@
+// guide for setting up translations https://dev.to/ramonak/react-native-internationalization-with-i18next-568n
+
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
