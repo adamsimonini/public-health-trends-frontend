@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { VStack, Center, Text, Button } from "native-base";
-import { VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
 import LocationFilter from "@components/Filters/Location/LocationFilter";
 import DiseaseFilter from "@components/Filters/DiseaseFilter";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector, useDispatch } from "react-redux";
 import Actions from "@store/actions";
 
 function FilterPanel() {
 	const counter = useSelector(state => state.counter);
 	const dispatch = useDispatch();
+	const { t } = useTranslation();
 
 	return (
 		<VStack space={4} alignItems="center" my="5">
@@ -30,7 +27,7 @@ function FilterPanel() {
 					dispatch(Actions.increment());
 				}}
 			>
-				See results
+				{t("seeResults")}
 			</Button>
 			<Text>{counter}</Text>
 		</VStack>
