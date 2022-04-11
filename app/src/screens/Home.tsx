@@ -8,7 +8,6 @@ import NavTitle from "@components/Navigation/NavTitle";
 import SplayData from "@components/SplayData";
 import "@translation/i18n.config";
 import { useTranslation } from "react-i18next";
-import LanguageToggle from "@components/Navigation/LanguageToggle";
 import { ThemeToggle } from "@theme/ThemeToggle";
 import ScreenHeading from "@components/ScreenHeading";
 import FilterPanel from "@components/Filters/FilterPanel";

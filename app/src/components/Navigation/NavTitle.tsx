@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Flex, Image, Box, Heading, VStack, Spacer, Center } from "native-base";
 import { useTranslation } from "react-i18next";
-// import LanguageToggle from "@components/Navigation/LanguageToggle";
 
 // Replace navigation title with custom component: https://reactnavigation.org/docs/headers/#replacing-the-title-with-a-custom-component
 
