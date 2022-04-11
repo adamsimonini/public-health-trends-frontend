@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useColorMode, Icon, Box, Button, Center, Select, CheckIcon, HStack } from "native-base";
+import { useColorMode, Icon, Box, Button, Center, Select, HStack, CheckIcon } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,14 +18,18 @@ const LanguageToggle = () => {
 
 	useEffect(() => {
 		if (storedLanguage) {
-			setLanguage(storedLanguage);
+			changeLanguage(storedLanguage);
 		}
 	}, []);
 
-	const changeLanguage = async selection => {
-		await setLanguage(selection);
-		await storeLanguage(selection);
-		i18n.changeLanguage(selection);
+	useEffect(() => {
+		console.log(language);
+		i18n.changeLanguage(language);
+	}, [language]);
+
+	const changeLanguage = async newLanguage => {
+		await setLanguage(newLanguage);
+		await storeLanguage(newLanguage);
 	};
 
 	return (

@@ -28,10 +28,10 @@ const getIcon = (screenName: any) => {
 		case "Home":
 		case "Domicile":
 			return "home";
-		case "Select disease":
+		case "Select-disease":
 		case "Sélectionnez la maladie":
 			return "virus-outline";
-		case "Choose locations":
+		case "Choose-locations":
 		case "Choisir des emplacements":
 			return "map-marker";
 		case "charts":
@@ -89,11 +89,16 @@ function NavDrawer() {
 	return (
 		<Box safeArea flex={1} w="100%">
 			<Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />} screenOptions={{ headerTintColor: hamburgerColour }}>
-				<Drawer.Screen name={t("home")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
+				{/* <Drawer.Screen name={t("home")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
 				<Drawer.Screen name={t("selectDisease")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Diseases} />
 				<Drawer.Screen name={t("chooseLocations")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Locations} />
 				<Drawer.Screen name={t("info")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Info} />
-				<Drawer.Screen name={t("settings")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} />
+				<Drawer.Screen name={t("settings")} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} /> */}
+				<Drawer.Screen name={"Home"} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Home} />
+				<Drawer.Screen name={"Select-disease"} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Diseases} />
+				<Drawer.Screen name={"Choose-locations"} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Locations} />
+				<Drawer.Screen name={"Info"} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Info} />
+				<Drawer.Screen name={"Settings"} options={{ headerTitle: props => <NavTitle {...props} /> }} component={Settings} />
 			</Drawer.Navigator>
 		</Box>
 	);

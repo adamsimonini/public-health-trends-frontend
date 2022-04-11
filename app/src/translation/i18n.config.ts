@@ -3,7 +3,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import { en, fr } from "./";
+import { en, fr, es, man } from "./";
 
 const resources = {
 	en: {
@@ -11,6 +11,12 @@ const resources = {
 	},
 	fr: {
 		translation: fr
+	},
+	es: {
+		translation: es
+	},
+	man: {
+		translation: man
 	}
 };
 
