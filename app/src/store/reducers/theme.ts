@@ -1,9 +1,9 @@
-import { TOGGLE_THEME } from "@store/actions/theme";
+import { SET_THEME } from "@store/actions/theme";
 
-export default function modifyLocations(state = "light", action: any) {
+export default function setTheme(state = "light", action: any) {
 	switch (action.type) {
-		case TOGGLE_THEME:
-			return state === "light" ? "dark" : "light";
+		case SET_THEME:
+			return action.payload;
 		default:
 			return state;
 	}

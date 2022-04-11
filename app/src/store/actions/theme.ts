@@ -1,8 +1,8 @@
-export const TOGGLE_THEME = "TOGGLE_THEME";
+export const SET_THEME = "SET_THEME";
 
-export function toggleTheme(data: any) {
+export function setTheme(data: string) {
 	return {
-		type: TOGGLE_THEME,
+		type: SET_THEME,
 		payload: data
 	};
 }
