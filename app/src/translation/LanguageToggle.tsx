@@ -26,7 +26,6 @@ const LanguageToggle = () => {
 		await setLanguage(selection);
 		await storeLanguage(selection);
 		i18n.changeLanguage(selection);
-		console.log(`state for component: ${selection}`);
 	};
 
 	return (
@@ -42,7 +41,7 @@ const LanguageToggle = () => {
 					endIcon: <CheckIcon size="5" />
 				}}
 				mt={1}
-				onValueChange={itemValue => changeLanguage(itemValue)}
+				onValueChange={selectedLanguage => changeLanguage(selectedLanguage)}
 			>
 				<Select.Item label="English" value="en" />
 				<Select.Item label="Français" value="fr" />
