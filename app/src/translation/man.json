@@ -6,8 +6,8 @@
 	"and": "and",
 	"chooseLanguage": "Choose a language",
 	"chooseLocations": "Choose locations",
-	"COVIDTrends": "COVIDTrends",
-	"dark": "Dark",
+	"COVIDTrends": "新冠病毒趋势",
+	"dark": "黑暗的",
 	"diseases": "Diseases",
 	"enterPostalCode": "Enter the first 3 characters of a postal code:",
 	"filters": "Filters",
@@ -20,5 +20,5 @@
 	"selectDisease": "Select disease",
 	"selectHealthIssue": "Select a public health issue",
 	"seeResults": "See results",
-	"settings": "Settings"
+	"settings": "设置"
 }

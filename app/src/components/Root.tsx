@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Box, useColorModeValue, useToken, Text, Stack, Input, Center, HStack, Switch, useColorMode } from "native-base";
+import { Box, useColorModeValue, useToken } from "native-base";
 import NavDrawer from "@components/Navigation/NavDrawer";
-import SplayData from "@components/SplayData";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
 
