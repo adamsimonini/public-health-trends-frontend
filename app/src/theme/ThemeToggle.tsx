@@ -12,7 +12,7 @@ const ThemeToggleFab = () => {
 	const storedTheme = useSelector(state => state.theme);
 
 	useEffect(() => {
-		dispatch(Actions.toggleTheme(colorMode));
+		dispatch(Actions.setTheme(colorMode));
 	}, [colorMode]);
 
 	useEffect(() => {
