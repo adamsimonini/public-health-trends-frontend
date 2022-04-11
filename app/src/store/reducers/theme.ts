@@ -1,12 +1,9 @@
-import { ADD_LOCATION, REMOVE_LOCATION } from "@store/actions/location";
+import { TOGGLE_THEME } from "@store/actions/theme";
 
-export default function modifyLocations(state = [], action: any) {
+export default function modifyLocations(state = "light", action: any) {
 	switch (action.type) {
-		case ADD_LOCATION:
-			return [...state, action.payload];
-		case REMOVE_LOCATION:
-			let newLocations: string[] = state.filter(e => e !== action.payload);
-			return newLocations;
+		case TOGGLE_THEME:
+			return state === "light" ? "dark" : "light";
 		default:
 			return state;
 	}

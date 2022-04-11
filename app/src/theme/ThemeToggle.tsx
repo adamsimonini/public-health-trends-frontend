@@ -1,11 +1,25 @@
+import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { Fab, useColorMode, Icon, Flex, Button, Box } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import Actions from "@store/actions/";
 
 const ThemeToggleFab = () => {
-	const { colorMode, toggleColorMode } = useColorMode();
+	const dispatch = useDispatch();
+	const { colorMode, setColorMode, toggleColorMode } = useColorMode();
+	const storedTheme = useSelector(state => state.theme);
+
+	useEffect(() => {
+		dispatch(Actions.toggleTheme(colorMode));
+	}, [colorMode]);
+
+	useEffect(() => {
+		if (storedTheme) {
+			setColorMode(storedTheme);
+		}
+	}, []);
 
 	return (
 		<>
