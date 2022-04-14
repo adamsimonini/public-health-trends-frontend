@@ -2,6 +2,7 @@ import React from "react";
 import { useColorMode, useBreakpointValue, useColorModeValue, Text } from "native-base";
 import { VStack, Box, Container, Image, AspectRatio, Stack, Heading, HStack, Center, Divider, Flex } from "native-base";
 import { useTranslation } from "react-i18next";
+import MetricRow from "./MetricRow";
 
 function DiseaseDataLine({ metric, metricName }) {
 	const translateTitle = {
@@ -42,6 +43,7 @@ function DisplayPanelDiseaseData({ JSONdata }: any) {
 
 function Panel({ data }: any) {
 	const margin = 3;
+	let healthRegionMetrics = data.metrics.health_region;
 	const { t } = useTranslation();
 	return (
 		<Center m={5} rounded="md" shadow={3} py="3">
@@ -56,10 +58,10 @@ function Panel({ data }: any) {
 					</Heading>
 					<Divider mb={margin} />
 				</Box>
-				<VStack h="100">
-					<Text>1</Text>
-					<Text>1</Text>
-					<Text>1</Text>
+				<VStack>
+					{Object.keys(healthRegionMetrics).map((key, i) => {
+						return <MetricRow metrics={healthRegionMetrics[key]} key={i} />;
+					})}
 				</VStack>
 				{/* heading for province metrics */}
 				<Box w="100%" alignItems="center">
