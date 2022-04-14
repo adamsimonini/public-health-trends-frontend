@@ -4,6 +4,8 @@ import { Box, useColorModeValue, useToken } from "native-base";
 import NavDrawer from "@components/Navigation/NavDrawer";
 import ThemeToggle from "@theme/ThemeToggle";
 import * as Linking from "expo-linking";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 // configuring links: https://reactnavigation.org/docs/configuring-links/
 const prefix = Linking.createURL("/");
@@ -12,6 +14,16 @@ const linking = {
 };
 
 export default function Root(props) {
+	const { i18n } = useTranslation();
+	const storedLanguage = useSelector(state => state.language);
+
+	useEffect(() => {
+		if (storedLanguage) {
+			console.log(storedLanguage);
+			i18n.changeLanguage(storedLanguage);
+		}
+	}, []);
+
 	const [lightBg, darkBg] = useToken("colors", ["coolGray.50", "blueGray.900"], "blueGray.900");
 	const bgColor = useColorModeValue(lightBg, darkBg);
 	const localization = props.localization;
